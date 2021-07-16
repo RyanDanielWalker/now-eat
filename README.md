@@ -44,6 +44,11 @@ State:
 * Current User Liked Movies Array/Object
 * Other User Liked Movies Array/Object
 * Current Restaurant being displayed
+* User logged in status
 
 //////////T's and P's\\\\\\\\\
 -this application potentially only needs READ functionality. 
+-need to figure out how to display different pages when a user successfully signs in/registers
+-
+
+
