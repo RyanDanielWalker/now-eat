@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 
 class RestaurantControl extends React.Component {
 
+  handle
+
   render() {
     const auth = this.props.firebase.auth();
     if (!isLoaded(auth)) {
@@ -33,11 +35,12 @@ class RestaurantControl extends React.Component {
   }
 }
 
-
-
 const mapStateToProps = state => {
   return {
-    selectedRestaurant: state.selectedRestaurant
+    masterRestaurantList: state.masterRestaurantList,
+    // selectedRestaurant: state.selectedRestaurant,
+    isLoading: state.isLoading,
+    error: state.error
   }
 }
 

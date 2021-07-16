@@ -14,6 +14,25 @@ export const getRestaurantsFailure = (error) => ({
   error
 });
 
+export const makeSelectedRestaurant = (restaurant) => {
+  const { name, city, state, rating, price, id } = restaurant;
+  return {
+    type: c.MAKE_SELECTED_RESTAURANT,
+    name: name,
+    city: city,
+    state: state,
+    rating: rating,
+    price: price,
+    id: id
+  }
+}
+
+export const nullSelectedRestaurant = () => {
+  return {
+    type: c.NULL_SELECTED_RESTAURANT
+  }
+}
+
 export const makeApiCall = () => {
   return dispatch => {
     dispatch(requestRestaurants);

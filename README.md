@@ -45,6 +45,11 @@ State:
 * Other User Liked Movies Array/Object
 * Current Restaurant being displayed
 * User logged in status
+*** 
+-Master Restaurant List is returned from API and saved in JSON object
+-Restaurant Detail page displays one restaurant {selected restaurant} at a time based on functionality (highest rated/closest)
+-When a choice is made (yes/no), selected restaurant is changed based on restaurant id
+
 
 //////////T's and P's\\\\\\\\\
 -this application potentially only needs READ functionality. 
