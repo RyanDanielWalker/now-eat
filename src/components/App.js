@@ -1,8 +1,9 @@
 import React from 'react';
-import SignIn from "./../src/components/SignIn";
-import RestaurantControl from './components/RestaurantControl'
+import SignIn from "./users/SignIn";
+import RestaurantControl from './RestaurantControl'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Header from './components/Header'
+import Header from './Header'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

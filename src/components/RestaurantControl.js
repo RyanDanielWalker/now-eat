@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from "prop-types";
 import * as a from './actions';
 import { withFirestore, isLoaded } from 'react-redux-firebase'
+import { Link } from "react-router-dom";
 
 class RestaurantControl extends React.Component {
 
@@ -22,8 +23,17 @@ class RestaurantControl extends React.Component {
         </React.Fragment>
       )
     }
+    if ((isLoaded(auth)) && (auth.currentUser != null)) {
+      return (
+        <React.Fragment>
+          <h1>Here be some shit</h1>
+        </React.Fragment>
+      )
+    }
   }
 }
+
+
 
 const mapStateToProps = state => {
   return {
