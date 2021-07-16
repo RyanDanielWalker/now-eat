@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createStore/* applyMiddleware */ } from 'redux';
+import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-// import thunkMiddleware from 'redux-thunk';
-// import middlewareLogger from './middleware/middleware-logger';
 import rootReducer from './components/reducers';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import { createFirestoreInstance } from 'redux-firestore';
@@ -17,7 +16,8 @@ const store = createStore(rootReducer)
 const rrfProps = {
   firebase,
   config: {
-    userProfile: "users"
+    userProfile: "users",
+    useFirestoreForProfile: true
   },
   dispatch: store.dispatch,
   createFirestoreInstance
