@@ -20,7 +20,6 @@ export const makeSelectedRestaurant = (restaurant) => {
     type: c.MAKE_SELECTED_RESTAURANT,
     name: name,
     city: city,
-    state: state,
     rating: rating,
     price: price,
     id: id
