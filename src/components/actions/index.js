@@ -17,7 +17,7 @@ export const getRestaurantsFailure = (error) => ({
 export const makeApiCall = () => {
   return dispatch => {
     dispatch(requestRestaurants);
-    return fetch(`https://api.yelp.com/v3/businesses/search?location=portland`, { Authorization: 'PUT API KEY HERE' })
+    return fetch(`https://api.yelp.com/v3/businesses/search?location=portland`, { Authorization: /*PUT API KEY HERE*/ '' })
       .then(response => response.json())
       .then(
         (jsonifiedResponse) => {
