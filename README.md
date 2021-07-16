@@ -41,8 +41,9 @@ Restaurants:
   * if 'no': display next restaurant
 
 State: 
-* Current User
-* Current Restaurant
+* Current User Liked Movies Array/Object
+* Other User Liked Movies Array/Object
+* Current Restaurant being displayed
 
 //////////T's and P's\\\\\\\\\
 -this application potentially only needs READ functionality. 
