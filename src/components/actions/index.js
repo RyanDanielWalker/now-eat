@@ -33,9 +33,10 @@ export const nullSelectedRestaurant = () => {
 }
 
 export const makeApiCall = () => {
+  // const myHeaders = new Headers();
   return dispatch => {
     dispatch(requestRestaurants);
-    return fetch(`https://api.yelp.com/v3/businesses/search?location=portland`, { Authorization: `${process.env.REACT_APP_FB_API_KEY}`, mode: "no-cors" })
+    return fetch(`https://api.yelp.com/v3/businesses/search?location=portland`, { mode: "no-cors", headers: new Headers({ 'Authorization': process.env.REACT_APP_YELP_API_KEY }) })
       .then(response => response.json())
       .then(
         (jsonifiedResponse) => {
