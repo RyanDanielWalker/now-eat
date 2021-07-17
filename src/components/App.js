@@ -10,9 +10,9 @@ function App() {
     <Router>
       <Header />
       <Switch>
-        <Route path="/signin">
+        {/* <Route path="/signin">
           <SignIn />
-        </Route>
+        </Route> */}
         <Route path="/">
           <RestaurantControl />
         </Route>

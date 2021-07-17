@@ -2,10 +2,24 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import PropTypes from "prop-types";
 // import * as a from './actions';
-import { withFirestore, isLoaded } from 'react-redux-firebase'
-import { makeApiCall } from './../components/actions'
+import { withFirestore, isLoaded } from 'react-redux-firebase';
+import { makeApiCall } from './../components/actions';
 
 class RestaurantControl extends React.Component {
+  /////////////////////////////////////////////////
+  ///////////// Like/Dislike Functions ///////////
+  ///////////////////////////////////////////////
+
+  // handleClickingYes = (id) => {
+  //   //add state.restaurant{id} to user list
+  //   //const currentRestaurant = this.props.masterRestaurantList[id]
+  //   //state.currentRestaurant = state.restaurant{id++}
+  //   //selectedRestaurant: currentRestaurant
+  // }
+
+  // handleClickingNo = () => {
+  //   //change selected restaurant to next restaurant
+  // }
 
   componentDidMount() {
     const { dispatch } = this.props;
@@ -13,47 +27,63 @@ class RestaurantControl extends React.Component {
   }
 
   render() {
-    const auth = this.props.firebase.auth();
-    if (!isLoaded(auth)) {
+    //////////////////////////////////////////////
+    ////////// User login conditionals //////////
+    ////////////////////////////////////////////
+
+    // const auth = this.props.firebase.auth();
+    // if (!isLoaded(auth)) {
+    //   return (
+    //     <React.Fragment>
+    //       <h1>Loading...</h1>
+    //     </React.Fragment>
+    //   )
+    // }
+    // if ((isLoaded(auth)) && (auth.currentUser == null)) {
+    //   return (
+    //     <React.Fragment>
+    //       <h1>You must be signed in to access the application, ya dingus.</h1>
+    //     </React.Fragment>
+    //   )
+    // }
+    // if ((isLoaded(auth)) && (auth.currentUser != null)) {
+
+    const { error, isLoading, headlines } = this.props
+    if (error) {
+      return <React.Fragment>Error: {error.message}</React.Fragment>;
+    } else if (isLoading) {
+      return <React.Fragment>Loading...</React.Fragment>;
+    } else {
       return (
         <React.Fragment>
-          <h1>Loading...</h1>
+          <h1>headlines</h1>
+          <ul>
+            {headlines.map((restaurant, index) =>
+              <li key={index}>
+                <h3>{restaurant.title}</h3>
+                <p>{restaurant.abstract}</p>
+              </li>
+            )}
+          </ul>
+
         </React.Fragment>
       )
-    }
-    if ((isLoaded(auth)) && (auth.currentUser == null)) {
-      return (
-        <React.Fragment>
-          <h1>You must be signed in to access the application, ya dingus.</h1>
-        </React.Fragment>
-      )
-    }
-    if ((isLoaded(auth)) && (auth.currentUser != null)) {
-      const { error, isLoading, masterRestaurantList, selectedRestaurant } = this.props
-      if (error) {
-        return <React.Fragment>Error: {error.message}</React.Fragment>;
-      } else if (isLoading) {
-        return <React.Fragment>Loading...</React.Fragment>;
-      } else {
-        return (
-          <React.Fragment>
-            <RestaurantDetail restaurant={this.props.selectedRestaurant} />
-          </React.Fragment>
-        )
-      }
     }
   }
 }
+// }
 
 const mapStateToProps = state => {
   return {
-    masterRestaurantList: state.masterRestaurantList,
-    selectedRestaurant: state.selectedRestaurant,
+    headlines: state.headlines,
     isLoading: state.isLoading,
     error: state.error
   }
 }
 
-RestaurantControl = connect(mapStateToProps)(RestaurantControl);
 
-export default withFirestore(RestaurantControl);
+export default connect(mapStateToProps)(RestaurantControl)
+
+
+// RestaurantControl = connect(mapStateToProps)(RestaurantControl);
+// export default withFirestore(RestaurantControl);

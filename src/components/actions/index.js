@@ -14,28 +14,29 @@ export const getRestaurantsFailure = (error) => ({
   error
 });
 
-export const makeSelectedRestaurant = (restaurant) => {
-  const { name, city, rating, price, id } = restaurant;
-  return {
-    type: c.MAKE_SELECTED_RESTAURANT,
-    name: name,
-    city: city,
-    rating: rating,
-    price: price,
-    id: id
-  }
-}
+// export const makeSelectedRestaurant = (restaurant) => {
+//   const { title, name, city, rating, price, id } = restaurant;
+//   return {
+//     type: c.MAKE_SELECTED_RESTAURANT,
+//     title: title
+//     // name: name,
+//     // city: city,
+//     // rating: rating,
+//     // price: price,
+//     // id: id
+//   }
+// }
 
-export const nullSelectedRestaurant = () => {
-  return {
-    type: c.NULL_SELECTED_RESTAURANT
-  }
-}
+// export const nullSelectedRestaurant = () => {
+//   return {
+//     type: c.NULL_SELECTED_RESTAURANT
+//   }
+// }
 
 export const makeApiCall = () => {
   return dispatch => {
     dispatch(requestRestaurants);
-    return fetch()
+    return fetch(`https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${process.env.REACT_APP_API_KEY}`)
       .then(response => response.json())
       .then(
         (jsonifiedResponse) => {

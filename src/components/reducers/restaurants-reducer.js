@@ -2,7 +2,7 @@ import * as c from '../actions/ActionTypes'
 
 let initialState = {
   isLoading: false,
-  restaurants: [],
+  headlines: [],
   error: null,
 }
 
@@ -15,9 +15,7 @@ export default (state = initialState, action) => {
     case c.GET_RESTAURANTS_SUCCESS:
       return Object.assign({}, state, {
         isLoading: false,
-        restaurants: action.restaurants
-        //if (!state.userList.contain(restaurants[0]))
-        //selectedRestaurant: restaurants[0]
+        headlines: action.headlines,
       });
     case c.GET_RESTAURANTS_FAILURE:
       return Object.assign({}, state, {
