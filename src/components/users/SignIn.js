@@ -7,9 +7,9 @@ function SignIn() {
     const email = event.target.email.value;
     const password = event.target.password.value;
     firebase.auth().createUserWithEmailAndPassword(email, password).then(function () {
-      console.log("successfully signed up!");
+      // console.log("successfully signed up!");
     }).catch(function (error) {
-      console.log(error.message);
+      // console.log(error.message);
     });
   }
 
@@ -18,7 +18,7 @@ function SignIn() {
     const email = event.target.signInEmail.value;
     const password = event.target.signInPassword.value;
     firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
-      console.log("successfully signed in!");
+      // console.log("successfully signed in!");
 
     }).catch(function (error) {
       console.log(error.message);
@@ -27,9 +27,9 @@ function SignIn() {
 
   function doSignOut() {
     firebase.auth().signOut().then(function () {
-      console.log("Successfully signed out!");
+      // console.log("Successfully signed out!");
     }).catch(function (error) {
-      console.log(error.message);
+      // console.log(error.message);
     });
   }
 

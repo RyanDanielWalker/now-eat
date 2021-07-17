@@ -26,7 +26,7 @@ What additional tools, frameworks, libraries, APIs, or other resources will thes
 - JWT
 
 
-////////Components\\\\\\\\\
+||||||||||||||||||||||Components||||||||||||||||||||||||
 Users:
 * Login/Register/Logoff
 * Page to see users' liked choices
@@ -40,6 +40,8 @@ Restaurants:
     * if, when compared to other users choices, similar 'yes' for certain restaurant, alert with 'match'
   * if 'no': display next restaurant
 
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
 State: 
 * Current User Liked Movies Array/Object
 * Other User Liked Movies Array/Object
@@ -51,9 +53,9 @@ State:
 -When a choice is made (yes/no), selected restaurant is changed based on restaurant id
 
 
-//////////T's and P's\\\\\\\\\
+|||||||||||||||||||||||||Thoughts||||||||||||||||||||||||
 -this application potentially only needs READ functionality. 
 -need to figure out how to display different pages when a user successfully signs in/registers
--
+
 
 

@@ -15,7 +15,7 @@ export const getRestaurantsFailure = (error) => ({
 });
 
 export const makeSelectedRestaurant = (restaurant) => {
-  const { name, city, state, rating, price, id } = restaurant;
+  const { name, city, rating, price, id } = restaurant;
   return {
     type: c.MAKE_SELECTED_RESTAURANT,
     name: name,
@@ -35,7 +35,7 @@ export const nullSelectedRestaurant = () => {
 export const makeApiCall = () => {
   return dispatch => {
     dispatch(requestRestaurants);
-    return fetch(`https://api.yelp.com/v3/businesses/search?location=portland`, { Authorization: /*PUT API KEY HERE*/ '' })
+    return fetch(`https://api.yelp.com/v3/businesses/search?location=portland`, { Authorization: `${process.env.REACT_APP_FB_API_KEY}`, mode: "no-cors" })
       .then(response => response.json())
       .then(
         (jsonifiedResponse) => {
