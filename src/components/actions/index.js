@@ -35,7 +35,7 @@ export const nullSelectedRestaurant = () => {
 export const makeApiCall = () => {
   return dispatch => {
     dispatch(requestRestaurants);
-    return fetch(``)
+    return fetch()
       .then(response => response.json())
       .then(
         (jsonifiedResponse) => {

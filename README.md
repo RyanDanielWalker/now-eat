@@ -56,6 +56,12 @@ State:
 |||||||||||||||||||||||||Thoughts||||||||||||||||||||||||
 -this application potentially only needs READ functionality. 
 -need to figure out how to display different pages when a user successfully signs in/registers
+-Not a big fan of yelp
+
+|||||||||||||||||||||||Potential APIs|||||||||||||||||||
+-Not Yelp
+-https://documenu.com/docs (has npm install capabilities)/500 calls per month though. No photos.
+
 
 
 
