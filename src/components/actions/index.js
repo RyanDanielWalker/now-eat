@@ -39,8 +39,8 @@ export const makeApiCall = () => {
       method: 'GET',
       mode: "no-cors",
       headers: {
-        'Authorization': 'Bearer ' + process.env.REACT_APP_YELP_API_KEY,
-        'Access-Control-Allow-Origin': '*'
+        Authorization: 'Bearer ' + process.env.REACT_APP_YELP_API_KEY,
+        'Content-type': 'application/json'
       }
     })
       .then(response => response.json())
