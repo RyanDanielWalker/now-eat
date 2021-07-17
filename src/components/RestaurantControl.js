@@ -54,9 +54,10 @@ class RestaurantControl extends React.Component {
     } else if (isLoading) {
       return <React.Fragment>Loading...</React.Fragment>;
     } else {
+      const thisHere = Object.values(props.headlines[0])
       return (
         <React.Fragment>
-
+          <h1>{thisHere}</h1>
         </React.Fragment>
       );
     }

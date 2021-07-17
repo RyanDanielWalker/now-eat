@@ -22,8 +22,6 @@ export default (state = initialState, action) => {
         isLoading: false,
         error: action.error
       });
-    case c.SELECTED_HEADLINE:
-
 
     default:
       return state;
