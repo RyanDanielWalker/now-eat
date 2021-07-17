@@ -1,8 +1,12 @@
 import React from 'react';
 import firebase from 'firebase/app';
 // import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
 function SignIn() {
+
+  const history = useHistory();
+
   function doSignUp(event) {
     event.preventDefault();
     const email = event.target.email.value;
@@ -20,6 +24,7 @@ function SignIn() {
     const password = event.target.signInPassword.value;
     firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
       // console.log("successfully signed in!");
+      history.push('/');
 
     }).catch(function (error) {
       console.log(error.message);
@@ -29,6 +34,7 @@ function SignIn() {
   function doSignOut() {
     firebase.auth().signOut().then(function () {
       // console.log("Successfully signed out!");
+      history.push('/');
     }).catch(function (error) {
       // console.log(error.message);
     });

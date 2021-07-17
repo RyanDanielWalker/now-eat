@@ -38,7 +38,8 @@ class RestaurantControl extends React.Component {
       } else {
         return (
           <React.Fragment>
-            <h1>Here be some shit</h1>
+            <p>cabbage</p>
+            {/* <RestaurantDetail /> */}
           </React.Fragment>
         )
       }
