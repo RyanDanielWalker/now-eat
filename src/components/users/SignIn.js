@@ -1,5 +1,6 @@
 import React from 'react';
 import firebase from 'firebase/app';
+// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function SignIn() {
   function doSignUp(event) {
