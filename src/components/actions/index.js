@@ -35,11 +35,13 @@ export const nullSelectedRestaurant = () => {
 export const makeApiCall = () => {
   return dispatch => {
     dispatch(requestRestaurants);
-    return fetch('https://api.yelp.com/v3/businesses/search?location=portland', {
+    return fetch(`https://api.yelp.com/v3/businesses/search?location=portland`, {
+      method: 'GET',
       mode: "no-cors",
       headers: {
-        'Authorization': `Bearer` + process.env.REACT_APP_YELP_API_KEY
-      },
+        'Authorization': 'Bearer ' + process.env.REACT_APP_YELP_API_KEY,
+        'Access-Control-Allow-Origin': '*'
+      }
     })
       .then(response => response.json())
       .then(
