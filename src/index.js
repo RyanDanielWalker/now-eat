@@ -4,33 +4,34 @@ import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import { createStore, applyMiddleware } from 'redux';
+// import rootReducer from './reducers';
 import { Provider } from 'react-redux';
-import rootReducer from './components/reducers';
-import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
-import { createFirestoreInstance } from 'redux-firestore';
-import firebase from "./firebase";
-import 'firebase/auth';
+// import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
+// import { createFirestoreInstance } from 'redux-firestore';
+// import firebase from "./firebase";
+// import 'firebase/auth';
 import thunkMiddleware from 'redux-thunk';
 import middlewareLogger from './middleware/middleware-logger';
-import SeedData from './components/SeedData';
+import restaurantsReducer from './reducers/restaurants-reducer';
+// import SeedData from './components/SeedData';
 
-const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, middlewareLogger))
+const store = createStore(restaurantsReducer, applyMiddleware(thunkMiddleware, middlewareLogger))
 
-const rrfProps = {
-  firebase,
-  config: {
-    userProfile: "users",
-    useFirestoreForProfile: true
-  },
-  dispatch: store.dispatch,
-  createFirestoreInstance
-}
+// const rrfProps = {
+//   firebase,
+//   config: {
+//     userProfile: "users",
+//     useFirestoreForProfile: true
+//   },
+//   dispatch: store.dispatch,
+//   createFirestoreInstance
+// }
 
 ReactDOM.render(
   <Provider store={store}>
-    <ReactReduxFirebaseProvider {...rrfProps}>
-      <App />
-    </ReactReduxFirebaseProvider>
+    {/* <ReactReduxFirebaseProvider {...rrfProps}> */}
+    <App />
+    {/* </ReactReduxFirebaseProvider> */}
   </Provider>,
   document.getElementById('root')
 )

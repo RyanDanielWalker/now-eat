@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 // import PropTypes from "prop-types";
-// import * as a from './actions';
-import { withFirestore, isLoaded } from 'react-redux-firebase';
-import { makeApiCall } from './../components/actions';
+// import * as a from './../actions';
+// import { withFirestore, isLoaded } from 'react-redux-firebase';
+import { makeApiCall } from '../actions';
 
 class RestaurantControl extends React.Component {
   /////////////////////////////////////////////////
@@ -48,7 +48,7 @@ class RestaurantControl extends React.Component {
     // }
     // if ((isLoaded(auth)) && (auth.currentUser != null)) {
 
-    const { error, isLoading, headlines } = this.props
+    const { error, isLoading, headlines } = this.props;
     if (error) {
       return <React.Fragment>Error: {error.message}</React.Fragment>;
     } else if (isLoading) {
@@ -56,33 +56,25 @@ class RestaurantControl extends React.Component {
     } else {
       return (
         <React.Fragment>
-          <h1>headlines</h1>
-          <ul>
-            {headlines.map((restaurant, index) =>
-              <li key={index}>
-                <h3>{restaurant.title}</h3>
-                <p>{restaurant.abstract}</p>
-              </li>
-            )}
-          </ul>
 
         </React.Fragment>
-      )
+      );
     }
   }
 }
-// }
+
+// We'll also need to add mapStateToProps() as well.
 
 const mapStateToProps = state => {
   return {
     headlines: state.headlines,
     isLoading: state.isLoading,
-    error: state.error
+    error: state.error,
+    selectedHeadline: state.selectedHeadline
   }
 }
 
-
-export default connect(mapStateToProps)(RestaurantControl)
+export default connect(mapStateToProps)(RestaurantControl);
 
 
 // RestaurantControl = connect(mapStateToProps)(RestaurantControl);
