@@ -3,7 +3,8 @@ import * as c from '../actions/ActionTypes';
 let initialState = {
   isLoading: false,
   headlines: [],
-  error: null
+  error: null,
+  selectedHeadline: null
 }
 
 export default (state = initialState, action) => {

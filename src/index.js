@@ -4,7 +4,6 @@ import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import { createStore, applyMiddleware } from 'redux';
-// import rootReducer from './reducers';
 import { Provider } from 'react-redux';
 // import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 // import { createFirestoreInstance } from 'redux-firestore';
@@ -12,10 +11,9 @@ import { Provider } from 'react-redux';
 // import 'firebase/auth';
 import thunkMiddleware from 'redux-thunk';
 import middlewareLogger from './middleware/middleware-logger';
-import restaurantsReducer from './reducers/restaurants-reducer';
-// import SeedData from './components/SeedData';
+import rootReducer from './reducers';
 
-const store = createStore(restaurantsReducer, applyMiddleware(thunkMiddleware, middlewareLogger))
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, middlewareLogger))
 
 // const rrfProps = {
 //   firebase,
