@@ -12,8 +12,9 @@ import firebase from "./firebase";
 import 'firebase/auth';
 import thunkMiddleware from 'redux-thunk';
 import middlewareLogger from './middleware/middleware-logger';
+import SeedData from './components/SeedData';
 
-const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, middlewareLogger))
+const store = createStore(rootReducer, SeedData, applyMiddleware(thunkMiddleware, middlewareLogger))
 
 const rrfProps = {
   firebase,

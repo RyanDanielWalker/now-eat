@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 // import PropTypes from "prop-types";
 // import * as a from './actions';
 import { withFirestore, isLoaded } from 'react-redux-firebase'
-// import { Link } from "react-router-dom";
 import { makeApiCall } from './../components/actions'
 
 class RestaurantControl extends React.Component {
@@ -30,7 +29,7 @@ class RestaurantControl extends React.Component {
       )
     }
     if ((isLoaded(auth)) && (auth.currentUser != null)) {
-      const { error, isLoading /*masterRestaurantList, selectedRestaurant*/ } = this.props
+      const { error, isLoading, masterRestaurantList, selectedRestaurant } = this.props
       if (error) {
         return <React.Fragment>Error: {error.message}</React.Fragment>;
       } else if (isLoading) {
@@ -38,8 +37,7 @@ class RestaurantControl extends React.Component {
       } else {
         return (
           <React.Fragment>
-            <p>cabbage</p>
-            {/* <RestaurantDetail /> */}
+            <RestaurantDetail restaurant={this.props.selectedRestaurant} />
           </React.Fragment>
         )
       }

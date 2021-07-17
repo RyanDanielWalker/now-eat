@@ -9,7 +9,7 @@ function RestaurantDetail(props) {
       <h1>{restaurant.name}</h1>
       <h3>{restaurant.rating}</h3>
       <h3>{restaurant.price}</h3>
-      <h3>{restaurant.image}</h3>
+      <h3>{restaurant.url}</h3>
       <button onClick={props.onClickingYes}>Yes</button>
       <button onClick={props.onClickingNo}>No</button>
       <hr />
