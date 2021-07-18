@@ -4,7 +4,9 @@ import PropTypes from "prop-types";
 // import * as a from './../actions';
 // import { withFirestore, isLoaded } from 'react-redux-firebase';
 import { makeApiCall } from '../actions';
-import HeadlineList from './HeadlineList'
+import { Carousel } from 'react-bootstrap';
+
+
 
 class RestaurantControl extends React.Component {
 
@@ -24,11 +26,18 @@ class RestaurantControl extends React.Component {
       return <React.Fragment>Loading...</React.Fragment>;
     } else {
       return (
-        <React.Fragment>
-          <HeadlineList
-            headlines={this.props.headlines}
-          />
-        </React.Fragment>
+        <Carousel>
+
+          {headlines.headlines.map((headline, index) => {
+            return <Carousel.Item key={index}>
+              <Carousel.Caption>
+                <h3>{headline.title}</h3>
+                <p>{headline.abstract}</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+          }
+          )}
+        </Carousel>
       );
     }
   }

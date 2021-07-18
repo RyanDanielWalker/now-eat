@@ -61,20 +61,4 @@ State:
 |||||||||||||||||||||||Potential APIs|||||||||||||||||||
 -Not Yelp
 -https://documenu.com/docs (has npm install capabilities)/500 calls per month though. No photos.
-
-
-
-
-STATE:
-error: null
-headlines: [
-  {},
-  {},
-  {}
-]
-isLoading: false
-currentHeadline: {
-  name: 
-  price:
-  id:
-}
+-https://api.documenu.com/v2/restaurant/4072702673999819?key=YOUR_API_KEY_GOES_HERE

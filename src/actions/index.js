@@ -6,13 +6,13 @@ export const requestHeadlines = () => ({
 
 export const getHeadlinesSuccess = (headlines) => ({
   type: c.GET_HEADLINES_SUCCESS,
+  // headlines
   headlines: headlines.map((headline, index) => ({
     title: headline.title,
     abstract: headline.abstract,
     section: headline.section,
     key: index
-  })
-  )
+  }))
 })
 
 export const getHeadlinesFailure = (error) => ({
@@ -37,7 +37,7 @@ export const makeCurrentHeadline = (currentHeadLine) => {
 export const makeApiCall = () => {
   return dispatch => {
     dispatch(requestHeadlines);
-    return fetch(`https://api.documenu.com/v2/restaurant/4072702673999819?key=YOUR_API_KEY_GOES_HERE`)
+    return fetch(`https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${process.env.REACT_APP_API_KEY}`)
       .then(response => response.json())
       .then(
         (jsonifiedResponse) => {
