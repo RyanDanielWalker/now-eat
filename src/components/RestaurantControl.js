@@ -15,7 +15,7 @@ class RestaurantControl extends React.Component {
   //////////////////////////////////////////////
   /////////////// Current State ////////////////
   //////////////////////////////////////////////
-  /////////// initialState = {  ////////////////
+  ///////////     State = {     ////////////////
   /////////// isLoading: false, ////////////////
   /////////// headlines: [
   // {"headline obj"}, //
@@ -27,38 +27,30 @@ class RestaurantControl extends React.Component {
   /////////// selectedHeadline: null ///////////
   //////////////////////////////////////////////
 
-
-  // handleChangingSelectedHeadline() {
-  //   const { dispatch } = this.props;
-
-  // }
+  handleChangingCurrentHeadline() {
+    const { dispatch } = this.props
+    const currentHeadline = this.props.headlines[0]
+    const action = a.makeCurrentHeadline(currentHeadline)
+    dispatch(action)
+  }
 
   render() {
 
-    const { error, isLoading, headlines, selectedHeadline } = this.props;
-    console.log(headlines)
-
-    let visibleState = null;
+    const { error, isLoading, headlines } = this.props;
+    console.log(headlines);
+    console.log(headlines.headlines[0]);
+    let selectedHeadline = headlines.headlines[0]
 
     if (error) {
       return <React.Fragment>Error: {error.message}</React.Fragment>;
     } else if (isLoading) {
       return <React.Fragment>Loading...</React.Fragment>;
     } else {
-      if (selectedHeadline != null) {
-        visibleState =
-          <HeadlineDetail
-            headline={this.props.selectedHeadline}
-            onClickingYes={this.handleClickingYes}
-            onClickingNo={this.handleClickingNo}
-          />
-      } else {
-        visibleState =
-          <BeginClicking onClickingBegin={this.handleSelectingHeadline} />
-      }
       return (
         <React.Fragment>
-          {visibleState}
+          <h1>Bros</h1>
+          <h1>{headlines.headlines[0]["title"]}</h1>
+          {/* <h3>{currentHeadline.abstract}</h3> */}
         </React.Fragment>
       );
     }

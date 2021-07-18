@@ -14,17 +14,10 @@ export const getHeadlinesFailure = (error) => ({
   error
 });
 
-export const makeSelectedHeadline = (headline) => {
-  const { title, section } = headline;
-  return {
-    type: c.MAKE_SELECTED_HEADLINE,
-    selectedHeadline: {
-      title: title,
-      section: section,
-    }
-  }
-}
-
+export const makeCurrentHeadline = (headline) => ({
+  type: c.MAKE_CURRENT_HEADLINE,
+  headline
+})
 
 export const makeApiCall = () => {
   return dispatch => {
