@@ -1,4 +1,3 @@
-import { getByTitle } from '@testing-library/react';
 import * as c from './ActionTypes';
 
 export const requestHeadlines = () => ({
@@ -38,7 +37,7 @@ export const makeCurrentHeadline = (currentHeadLine) => {
 export const makeApiCall = () => {
   return dispatch => {
     dispatch(requestHeadlines);
-    return fetch(`https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${process.env.REACT_APP_API_KEY}`)
+    return fetch(`https://api.documenu.com/v2/restaurant/4072702673999819?key=YOUR_API_KEY_GOES_HERE`)
       .then(response => response.json())
       .then(
         (jsonifiedResponse) => {

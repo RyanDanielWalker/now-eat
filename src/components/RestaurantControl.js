@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
-import * as a from './../actions';
+// import * as a from './../actions';
 // import { withFirestore, isLoaded } from 'react-redux-firebase';
 import { makeApiCall } from '../actions';
-// import HeadlineDetail from './HeadlineDetail'
+import HeadlineList from './HeadlineList'
 
 class RestaurantControl extends React.Component {
 
@@ -14,6 +14,7 @@ class RestaurantControl extends React.Component {
   }
 
   render() {
+    // let visibleState = null;
     const { error, isLoading, headlines } = this.props;
     console.log(headlines);
 
@@ -24,7 +25,9 @@ class RestaurantControl extends React.Component {
     } else {
       return (
         <React.Fragment>
-          <h1>Bros</h1>
+          <HeadlineList
+            headlines={this.props.headlines}
+          />
         </React.Fragment>
       );
     }
