@@ -1,3 +1,4 @@
+import { getByTitle } from '@testing-library/react';
 import * as c from './ActionTypes';
 
 export const requestHeadlines = () => ({
@@ -6,8 +7,14 @@ export const requestHeadlines = () => ({
 
 export const getHeadlinesSuccess = (headlines) => ({
   type: c.GET_HEADLINES_SUCCESS,
-  headlines
-});
+  headlines: headlines.map((headline, index) => ({
+    title: headline.title,
+    abstract: headline.abstract,
+    section: headline.section,
+    key: index
+  })
+  )
+})
 
 export const getHeadlinesFailure = (error) => ({
   type: c.GET_HEADLINES_FAILURE,

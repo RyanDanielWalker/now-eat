@@ -29,7 +29,7 @@ class RestaurantControl extends React.Component {
 
   render() {
     const { error, isLoading, headlines, currentHeadline } = this.props;
-    // console.log(headlines);
+    console.log(headlines);
 
     if (error) {
       return <React.Fragment>Error: {error.message}</React.Fragment>;
@@ -38,6 +38,7 @@ class RestaurantControl extends React.Component {
     } else {
       return (
         <React.Fragment>
+          <h1>Bros</h1>
         </React.Fragment>
       );
     }
