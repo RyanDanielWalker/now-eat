@@ -24,22 +24,23 @@ class RestaurantControl extends React.Component {
   // {"headline obj"}, //
   // ],                //
   /////////// error: null,      ////////////////
-  /////////// selectedHeadline: null ///////////
+  /////////// currentHeadline: null ///////////
   //////////////////////////////////////////////
 
   handleChangingCurrentHeadline() {
     const { dispatch } = this.props
-    const currentHeadline = this.props.headlines[0]
+    const currentHeadline = this.props.headlines.headlines[0]
+    console.log('currentHeadLine =', currentHeadline)
     const action = a.makeCurrentHeadline(currentHeadline)
     dispatch(action)
   }
 
   render() {
-
-    const { error, isLoading, headlines } = this.props;
+    this.handleChangingCurrentHeadline()
+    const { error, isLoading, headlines, currentHeadline } = this.props;
     console.log(headlines);
     console.log(headlines.headlines[0]);
-    let selectedHeadline = headlines.headlines[0]
+    console.log("Display current Headline = ", currentHeadline)
 
     if (error) {
       return <React.Fragment>Error: {error.message}</React.Fragment>;
@@ -49,8 +50,6 @@ class RestaurantControl extends React.Component {
       return (
         <React.Fragment>
           <h1>Bros</h1>
-          <h1>{headlines.headlines[0]["title"]}</h1>
-          {/* <h3>{currentHeadline.abstract}</h3> */}
         </React.Fragment>
       );
     }
@@ -61,7 +60,7 @@ RestaurantControl.propTypes = {
   headlines: PropTypes.object,
   isLoading: PropTypes.bool,
   error: PropTypes.object,
-  selectedHeadline: PropTypes.object
+  currentHeadline: PropTypes.object
 }
 
 const mapStateToProps = state => {
@@ -69,7 +68,7 @@ const mapStateToProps = state => {
     headlines: state.headlines,
     isLoading: state.isLoading,
     error: state.error,
-    selectedHeadline: state.selectedHeadline
+    currentHeadline: state.currentHeadline
   }
 }
 

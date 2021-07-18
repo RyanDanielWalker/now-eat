@@ -65,3 +65,16 @@ State:
 
 
 
+STATE:
+error: null
+headlines: [
+  {},
+  {},
+  {}
+]
+isLoading: false
+currentHeadline: {
+  name: 
+  price:
+  id:
+}

@@ -4,7 +4,7 @@ let initialState = {
   isLoading: false,
   headlines: [],
   error: null,
-  selectedHeadline: null
+  currentHeadline: {}
 }
 
 export default (state = initialState, action) => {
