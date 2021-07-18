@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
-import * as a from './../actions';
+// import * as a from './../actions';
 // import { withFirestore, isLoaded } from 'react-redux-firebase';
 import { makeApiCall } from '../actions';
 
@@ -27,20 +27,9 @@ class RestaurantControl extends React.Component {
   /////////// currentHeadline: null ///////////
   //////////////////////////////////////////////
 
-  handleChangingCurrentHeadline() {
-    const { dispatch } = this.props
-    const currentHeadline = this.props.headlines.headlines[0]
-    console.log('currentHeadLine =', currentHeadline)
-    const action = a.makeCurrentHeadline(currentHeadline)
-    dispatch(action)
-  }
-
   render() {
-    this.handleChangingCurrentHeadline()
     const { error, isLoading, headlines, currentHeadline } = this.props;
-    console.log(headlines);
-    console.log(headlines.headlines[0]);
-    console.log("Display current Headline = ", currentHeadline)
+    // console.log(headlines);
 
     if (error) {
       return <React.Fragment>Error: {error.message}</React.Fragment>;
@@ -49,12 +38,12 @@ class RestaurantControl extends React.Component {
     } else {
       return (
         <React.Fragment>
-          <h1>Bros</h1>
         </React.Fragment>
       );
     }
   }
 }
+
 
 RestaurantControl.propTypes = {
   headlines: PropTypes.object,
