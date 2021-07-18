@@ -21,18 +21,19 @@ export const getHeadlinesFailure = (error) => ({
   error
 });
 
-// export const makeCurrentHeadline = (currentHeadLine) => {
-//   const { title, abstract, section } = currentHeadLine
-//   return {
-//     type: c.MAKE_CURRENT_HEADLINE,
-//     currentHeadLine: {
-//       title: title,
-//       abstract: abstract,
-//       section: section
-//     }
+export const makeCurrentHeadline = (currentHeadLine) => {
+  const { title, abstract, section, key } = currentHeadLine
+  return {
+    type: c.MAKE_CURRENT_HEADLINE,
+    currentHeadLine: {
+      title: title,
+      abstract: abstract,
+      section: section,
+      key: key
+    }
 
-//   }
-// }
+  }
+}
 
 export const makeApiCall = () => {
   return dispatch => {

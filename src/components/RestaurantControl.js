@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
-// import * as a from './../actions';
+import * as a from './../actions';
 // import { withFirestore, isLoaded } from 'react-redux-firebase';
 import { makeApiCall } from '../actions';
+// import HeadlineDetail from './HeadlineDetail'
 
 class RestaurantControl extends React.Component {
 
@@ -12,23 +13,8 @@ class RestaurantControl extends React.Component {
     dispatch(makeApiCall())
   }
 
-  //////////////////////////////////////////////
-  /////////////// Current State ////////////////
-  //////////////////////////////////////////////
-  ///////////     State = {     ////////////////
-  /////////// isLoading: false, ////////////////
-  /////////// headlines: [
-  // {"headline obj"}, //
-  // {"headline obj"}, //
-  // {"headline obj"}, //
-  // {"headline obj"}, //
-  // ],                //
-  /////////// error: null,      ////////////////
-  /////////// currentHeadline: null ///////////
-  //////////////////////////////////////////////
-
   render() {
-    const { error, isLoading, headlines, currentHeadline } = this.props;
+    const { error, isLoading, headlines } = this.props;
     console.log(headlines);
 
     if (error) {
@@ -44,7 +30,6 @@ class RestaurantControl extends React.Component {
     }
   }
 }
-
 
 RestaurantControl.propTypes = {
   headlines: PropTypes.object,
@@ -75,7 +60,20 @@ export default connect(mapStateToProps)(RestaurantControl);
 
 
 
-
+//////////////////////////////////////////////
+  /////////////// Current State ////////////////
+  //////////////////////////////////////////////
+  ///////////     State = {     ////////////////
+  /////////// isLoading: false, ////////////////
+  /////////// headlines: [
+  // {"headline obj"}, //
+  // {"headline obj"}, //
+  // {"headline obj"}, //
+  // {"headline obj"}, //
+  // ],                //
+  /////////// error: null,      ////////////////
+  /////////// currentHeadline: null ///////////
+  //////////////////////////////////////////////
 
 
 
