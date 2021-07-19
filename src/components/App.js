@@ -1,9 +1,9 @@
 import React from 'react';
 // import SignIn from "./users/SignIn";
-import RestaurantControl from './RestaurantControl'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from './Header'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import RestaurantList from './RestaurantList';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
           <SignIn />
         </Route> */}
         <Route path="/">
-          <RestaurantControl />
+          <RestaurantList />
         </Route>
       </Switch>
     </Router>
