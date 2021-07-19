@@ -9,7 +9,7 @@ function RestaurantList() {
     { collection: 'restaurants' }
   ]);
 
-  const restaurants = useSelector((state) => state.firestore.ordered.restaurants);
+  const restaurants = useSelector(state => state.firestore.restaurants);
 
   if (isLoaded(restaurants)) {
     const restaurantList = restaurants.map((restaurant) => {
