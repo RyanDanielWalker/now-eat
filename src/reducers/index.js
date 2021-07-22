@@ -1,4 +1,4 @@
-import { firestoreReducer } from 'react-redux-firebase';
+import { firestoreReducer } from 'redux-firestore';
 import { combineReducers } from 'redux';
 import restaurantsReducer from './restaurants-reducer';
 import selectedRestaurantReducer from './selected-restaurant-reducer';
