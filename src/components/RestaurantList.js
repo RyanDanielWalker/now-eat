@@ -1,6 +1,7 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { withFirestore, useFirestoreConnect, isLoaded } from 'react-redux-firebase';
+import * as a from './../actions';
 
 function RestaurantList() {
 
@@ -13,12 +14,20 @@ function RestaurantList() {
     boxShadow: '5px 5px 5px #AF9E0C'
   }
 
+  const dispatch = useDispatch()
+
   useFirestoreConnect([
     { collection: 'restaurants' }
   ]);
 
   const restaurants = useSelector(state => state.firestore.ordered.restaurants);
-  console.log(restaurants)
+  const count = useSelector(state => state.counter.count);
+  console.log(restaurants);
+  console.log(count);
+
+  const clickButton = () => {
+    dispatch(a.increaseCounter());
+  }
 
   if (isLoaded(restaurants)) {
     const renderList = restaurants.map((restaurant, index) => {
@@ -44,8 +53,8 @@ function RestaurantList() {
     })
     return (
       <React.Fragment>
-        <>{renderList}</>
-        {/* <button onClick={clickButton} type="submit">Yes</button> */}
+        <>{renderList[count]}</>
+        <button onClick={clickButton} type="submit">Yes</button>
       </React.Fragment>
     )
   } else {

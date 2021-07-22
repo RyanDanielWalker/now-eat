@@ -7,11 +7,17 @@ export const setRestaurants = (restaurants) => {
   }
 }
 
-export const selectedRestaurant = (restaurant) => ({
-  type: c.SELECTED_RESTAURANT,
-  restaurant
-})
+// export const selectedRestaurant = (restaurant) => ({
+//   type: c.SELECTED_RESTAURANT,
+//   restaurant
+// })
 
-export const removeSelectedRestaurant = () => ({
-  type: c.REMOVE_SELECTED_RESTAURANT
-})
+// export const removeSelectedRestaurant = () => ({
+//   type: c.REMOVE_SELECTED_RESTAURANT
+// })
+
+export const increaseCounter = () => {
+  return {
+    type: c.INCREASE_COUNTER
+  }
+}
