@@ -10,12 +10,8 @@ function App() {
     <Router>
       <Header />
       <Switch>
-        {/* <Route path="/signin">
-          <SignIn />
-        </Route> */}
-        <Route path="/">
-          <RestaurantList />
-        </Route>
+        {/* <Route path="/signin" exact component={SignIn} /> */}
+        <Route path="/" exact component={RestaurantList} />
       </Switch>
     </Router>
   );
