@@ -9,7 +9,7 @@ function RestaurantList() {
     textAlign: 'center',
     margin: 'auto',
     width: '50vw',
-    marginTop: '10vw',
+    marginTop: '5vw',
     boxShadow: '5px 5px 5px #AF9E0C'
   }
 
