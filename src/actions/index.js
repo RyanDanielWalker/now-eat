@@ -16,8 +16,9 @@ export const setRestaurants = (restaurants) => {
 //   type: c.REMOVE_SELECTED_RESTAURANT
 // })
 
-export const increaseCounter = () => {
+export const increaseCounter = (newCount) => {
   return {
-    type: c.INCREASE_COUNTER
+    type: c.INCREASE_COUNTER,
+    newCount
   }
 }

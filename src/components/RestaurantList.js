@@ -14,19 +14,19 @@ function RestaurantList() {
     boxShadow: '5px 5px 5px #AF9E0C'
   }
 
-  const dispatch = useDispatch()
-
   useFirestoreConnect([
     { collection: 'restaurants' }
   ]);
 
+  const dispatch = useDispatch()
   const restaurants = useSelector(state => state.firestore.ordered.restaurants);
   const count = useSelector(state => state.counter.count);
   console.log(restaurants);
   console.log(count);
 
   const clickButton = () => {
-    dispatch(a.increaseCounter());
+    const newCount = count + 1
+    dispatch(a.increaseCounter(newCount));
   }
 
   if (isLoaded(restaurants)) {
