@@ -1,10 +1,18 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { withFirestore, useFirestoreConnect, isLoaded } from 'react-redux-firebase';
-import * as a from './../actions';
-
 
 function RestaurantList() {
+
+  const cardStyles = {
+    padding: '10px',
+    textAlign: 'center',
+    margin: 'auto',
+    width: '50vw',
+    marginTop: '10vw',
+    boxShadow: '5px 5px 5px #AF9E0C'
+  }
+
   useFirestoreConnect([
     { collection: 'restaurants' }
   ]);
@@ -16,22 +24,21 @@ function RestaurantList() {
     const renderList = restaurants.map((restaurant, index) => {
       const { image, name, rating, zip, url } = restaurant;
       return (
-        <div className="ui grid container" key={index}>
-          <div className="four wide column">
-            <div className="ui link cards">
-              <div className="card">
-                <div className="image">
-                  <img src={image} alt={`food from ${name}`} />
-                </div >
-                <div className="content">
-                  <div className="header">{name}</div>
-                  <div className="meta">{rating}</div>
-                  <div className="meta">{url}</div>
-                  <div className="meta">{zip}</div>
-                </div>
+        <div className="ui link cards" key={index}>
+          <div style={cardStyles} className="card" >
+            <div className="image">
+              <img src={image} alt={`food from ${name}`} />
+            </div >
+            <div className="content">
+              <div className="header">
+                <a href={url} target="blank" rel="noopener noreferrer">{name}</a>
               </div>
+              <div className="meta">
+                <span className="rating">Rating: {rating}/5</span>
+              </div>
+              <div className="meta">{zip}</div>
             </div>
-          </div >
+          </div>
         </div>
       )
     })
