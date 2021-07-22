@@ -54,7 +54,11 @@ function RestaurantList() {
     return (
       <React.Fragment>
         <>{renderList[count]}</>
-        <button onClick={clickButton} type="submit">Yes</button>
+        <div class="ui large buttons">
+          <button onClick={clickButton} class="ui button"><i class="thumbs up outline icon"></i>Yes</button>
+          <div class="or"></div>
+          <button onClick={clickButton} class="ui button"><i class="thumbs down outline icon"></i>No</button>
+        </div>
       </React.Fragment>
     )
   } else {
@@ -64,8 +68,6 @@ function RestaurantList() {
       </React.Fragment>
     )
   }
-
-
 }
 
 export default withFirestore(RestaurantList)
