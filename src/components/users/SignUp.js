@@ -1,13 +1,31 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import firebase from 'firebase/app';
 
-function SignUp(props) {
+function SignUp() {
+
+  const history = useHistory();
+
+  function doSignUp(event) {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(function () {
+        // console.log("successfully signed up!");
+        history.push('/signIn')
+      }).catch(function (error) {
+        // console.log(error.message);
+        alert(error.message);
+      });
+  }
 
   return (
     <div>
       <h1>Sign Up</h1>
-      <form onSubmit={props.onClickingSignUp}>
+      <form onSubmit={doSignUp}>
         <input
           type='text'
           name='email'
@@ -24,10 +42,6 @@ function SignUp(props) {
       <p>Sign In <Link to={"/signin"}>here</Link></p>
     </div>
   )
-}
-
-SignUp.propTypes = {
-  onClickingSignUp: PropTypes.func
 }
 
 export default SignUp

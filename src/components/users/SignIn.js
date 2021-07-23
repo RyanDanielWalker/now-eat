@@ -1,13 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { Link, useHistory } from 'react-router-dom';
+import firebase from 'firebase/app';
 
-function SignIn(props) {
+
+function SignIn() {
+
+  const history = useHistory();
+
+  function doSignIn(event) {
+    event.preventDefault();
+    const email = event.target.signInEmail.value;
+    const password = event.target.signInPassword.value;
+    firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
+      // console.log("successfully signed in!");
+      history.push('/');
+    }).catch(function (error) {
+      console.log(error.message);
+    });
+  }
 
   return (
     <React.Fragment>
       <h1>Sign In</h1>
-      <form onSubmit={props.onClickingSignIn}>
+      <form onSubmit={doSignIn}>
         <input
           type='text'
           name='signInEmail'
@@ -28,10 +43,6 @@ function SignIn(props) {
       <button onClick={doSignOut}>Sign out</button> */}
     </React.Fragment >
   )
-}
-
-SignIn.propTypes = {
-  onClickingSignIn: PropTypes.func
 }
 
 export default SignIn
