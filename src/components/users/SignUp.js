@@ -1,15 +1,12 @@
 import React from 'react';
-import { propTypes } from 'react-bootstrap/esm/Image';
-import { useHistory } from 'react-router';
+import PropTypes from 'prop-types';
 
 function SignUp(props) {
-
-  const history = useHistory();
 
   return (
     <div>
       <h1>Sign Up</h1>
-      <form onSubmit={onClickingSignUp}>
+      <form onSubmit={props.onClickingSignUp}>
         <input
           type='text'
           name='email'
@@ -27,7 +24,7 @@ function SignUp(props) {
 }
 
 SignUp.propTypes = {
-  onClickingSignUp: propTypes.func
+  onClickingSignUp: PropTypes.func
 }
 
 export default SignUp

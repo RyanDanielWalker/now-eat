@@ -8,6 +8,8 @@ import SignIn from './users/SignIn';
 function Home() {
 
   const history = useHistory();
+  const auth = firebase.auth();
+  console.log(auth.currentUser)
 
   function handleClickingSignIn(event) {
     event.preventDefault();
@@ -38,23 +40,23 @@ function Home() {
       });
   }
 
-  function doSignOut() {
-    firebase.auth().signOut().then(function () {
-      // console.log("Successfully signed out!");
-      history.push('/');
-    }).catch(function (error) {
-      // console.log(error.message);
-    });
-  }
+  // function doSignOut() {
+  //   firebase.auth().signOut().then(function () {
+  //     // console.log("Successfully signed out!");
+  //     history.push('/');
+  //   }).catch(function (error) {
+  //     // console.log(error.message);
+  //   });
+  // }
 
-  function handleClickingSignOut() {
-    firebase.auth().signOut().then(function () {
-      // console.log("Successfully signed out!");
-      history.push('/');
-    }).catch(function (error) {
-      // console.log(error.message);
-    });
-  }
+  // function handleClickingSignOut() {
+  //   firebase.auth().signOut().then(function () {
+  //     // console.log("Successfully signed out!");
+  //     history.push('/');
+  //   }).catch(function (error) {
+  //     // console.log(error.message);
+  //   });
+  // }
 
   if (!isLoaded(auth)) {
     return (
