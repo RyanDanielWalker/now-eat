@@ -9,11 +9,19 @@ function Header() {
         <Navbar.Brand as={Link} to="/">Now Eat</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="me-auto"></Nav>
+          <Nav>
             <Nav.Link as={Link} to="/signin">
-              Account Options
+              Sign In
+            </Nav.Link>
+            <Nav.Link as={Link} to="/signup">
+              Sign Up
+            </Nav.Link>
+            <Nav.Link as={Link} to="/logoff">
+              Log Off
             </Nav.Link>
           </Nav>
+
         </Navbar.Collapse>
       </Container>
     </Navbar>
