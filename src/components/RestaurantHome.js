@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { withFirestore, useFirestoreConnect, isLoaded } from 'react-redux-firebase';
 import Restaurant from './Restaurant';
-import * as a from './../actions';
+import * as a from '../actions';
 
 function RestaurantList() {
 

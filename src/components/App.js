@@ -1,18 +1,23 @@
 import React from 'react';
-// import SignIn from "./users/SignIn";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Header from './Header'
+import Container from 'react-bootstrap/Container'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import RestaurantList from './RestaurantList';
+import Header from './Header'
+import SignIn from "./users/SignIn";
+import RestaurantHome from './RestaurantHome';
+import Home from './Home';
 
 function App() {
   return (
     <Router>
       <Header />
-      <Switch>
-        {/* <Route path="/signin" exact component={SignIn} /> */}
-        <Route path="/" exact component={RestaurantList} />
-      </Switch>
+      <Container>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/signin" exact component={SignIn} />
+          <Route path="/restaurant_home" exact component={RestaurantHome} />
+        </Switch>
+      </Container>
     </Router>
   );
 }
