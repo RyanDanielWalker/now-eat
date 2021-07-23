@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 function SignUp(props) {
 
@@ -19,6 +20,8 @@ function SignUp(props) {
         />
         <button type='submit'>Sign up</button>
       </form>
+      <p>Already have an account?</p>
+      <p>Sign In <Link to={"/signin"}>here</Link></p>
     </div>
   )
 }

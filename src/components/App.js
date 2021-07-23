@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './Header'
 import SignIn from "./users/SignIn";
 import SignUp from './users/SignUp'
+import SignOut from './users/SignOut'
 import RestaurantHome from './RestaurantHome';
 import Home from './Home';
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/signin" exact component={SignIn} />
           <Route path="/signup" exact component={SignUp} />
+          <Route path="/signout" exact component={SignOut} />
           <Route path="/restaurant_home" exact component={RestaurantHome} />
         </Switch>
       </Container>

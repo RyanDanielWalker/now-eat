@@ -17,8 +17,8 @@ function Header() {
             <Nav.Link as={Link} to="/signup">
               Sign Up
             </Nav.Link>
-            <Nav.Link as={Link} to="/logoff">
-              Log Off
+            <Nav.Link as={Link} to="/signout">
+              Sign Out
             </Nav.Link>
           </Nav>
 
