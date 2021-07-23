@@ -4,7 +4,7 @@ import { withFirestore, useFirestoreConnect, isLoaded } from 'react-redux-fireba
 import Restaurant from './Restaurant';
 import * as a from '../actions';
 
-function RestaurantList() {
+const RestaurantList = () => {
 
   const cardStyles = {
     padding: '10px',

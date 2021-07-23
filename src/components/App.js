@@ -9,7 +9,7 @@ import SignOut from './users/SignOut'
 import RestaurantHome from './RestaurantHome';
 import Home from './Home';
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Header />

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Restaurant(props) {
+const Restaurant = (props) => {
   return (
     <div className="ui cards" key={props.id}>
       <div style={props.cardStyles} className="card" >

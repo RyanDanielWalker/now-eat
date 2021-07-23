@@ -4,7 +4,7 @@ let initialState = {
   restaurants: []
 }
 
-export default (state = initialState, action) => {
+const restaurantsReducer = (state = initialState, action) => {
   switch (action.type) {
     case c.SET_RESTAURANTS:
       return { ...state, restaurants: action.restaurants };
@@ -12,3 +12,5 @@ export default (state = initialState, action) => {
       return state;
   }
 }
+
+export default restaurantsReducer;

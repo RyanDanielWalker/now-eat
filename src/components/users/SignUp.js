@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
 import firebase from 'firebase/app';
+import { Link, useHistory } from 'react-router-dom';
 
-function SignUp() {
+const SignUp = () => {
 
   const history = useHistory();
 
-  function doSignUp(event) {
+  const doSignUp = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;

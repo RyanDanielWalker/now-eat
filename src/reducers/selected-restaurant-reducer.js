@@ -1,6 +1,6 @@
 import * as c from './../actions/ActionTypes'
 
-export default (state = {}, action) => {
+const selectedRestaurantReducer = (state = {}, action) => {
   switch (action.type) {
     case c.SELECTED_RESTAURANT:
       return { ...state, ...action };
@@ -10,3 +10,5 @@ export default (state = {}, action) => {
       return state
   }
 }
+
+export default selectedRestaurantReducer;

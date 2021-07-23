@@ -4,7 +4,7 @@ import firebase from 'firebase/app';
 import RestaurantHome from './RestaurantHome';
 import SignIn from './users/SignIn';
 
-function Home() {
+const Home = () => {
 
   const auth = firebase.auth();
   console.log(auth.currentUser)

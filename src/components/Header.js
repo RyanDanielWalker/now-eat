@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, Container } from 'react-bootstrap';
 
-function Header() {
+const Header = () => {
   return (
     <Navbar expand="lg" bg="dark" variant="dark">
       <Container>

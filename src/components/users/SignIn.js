@@ -3,11 +3,11 @@ import { Link, useHistory } from 'react-router-dom';
 import firebase from 'firebase/app';
 
 
-function SignIn() {
+const SignIn = () => {
 
   const history = useHistory();
 
-  function doSignIn(event) {
+  const doSignIn = (event) => {
     event.preventDefault();
     const email = event.target.signInEmail.value;
     const password = event.target.signInPassword.value;
@@ -38,9 +38,6 @@ function SignIn() {
 
       <p>Don't have an account?</p>
       <p>Create one <Link to={`/signup`}>here</Link></p>
-
-      {/* <h1>Sign Out</h1>
-      <button onClick={doSignOut}>Sign out</button> */}
     </React.Fragment >
   )
 }

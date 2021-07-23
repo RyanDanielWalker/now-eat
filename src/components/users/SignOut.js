@@ -2,11 +2,11 @@ import React from 'react';
 import firebase from 'firebase/app';
 import { useHistory } from 'react-router-dom';
 
-function SignOut() {
+const SignOut = () => {
 
   const history = useHistory();
 
-  function doSignOut() {
+  const doSignOut = () => {
     firebase.auth().signOut().then(function () {
       // console.log("Successfully signed out!");
       history.push('/');
