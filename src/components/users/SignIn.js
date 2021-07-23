@@ -40,6 +40,6 @@ const SignIn = () => {
       <p>Create one <Link to={`/signup`}>here</Link></p>
     </React.Fragment >
   )
-}
+};
 
-export default SignIn
+export default SignIn;
