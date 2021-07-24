@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 
 const RestaurantHome = (props) => {
   //filter 'const restaurants' to only include restaurants that are not in users liked restaurants array.
-  //Add new user collection if one does not exist based on the currently logged in user.
 
   const cardStyles = {
     padding: '10px',
@@ -29,25 +28,43 @@ const RestaurantHome = (props) => {
   ]);
 
   const currentUserId = props.currentUser.uid;
-  console.log("Current User ID", currentUserId)
-  const firestoreUsers = useSelector(state => state.firestore.ordered.users)
-  console.log("Firestore user list", firestoreUsers)
   const restaurants = useSelector(state => state.firestore.ordered.restaurants);
   const count = useSelector(state => state.counter.count);
+  console.log("Current User", currentUserId);
+  console.log("Restaurants", restaurants);
+  console.log("Count", count);
 
-  const addToLikedRestaurants = () => {
-    firestore.collection('users').where("id", "array-contains", currentUserId).add(
-      {
-        likedRestaurants: restaurants[count].id
-      }
-    )
-    counterGoesUp();
-  }
+  const userLikedRestaurants = firestore.collection('users').doc(currentUserId).where(doc => doc.data().likedRestaurants)
+  console.log("User Liked Array", userLikedRestaurants)
 
   const counterGoesUp = () => {
     const newCount = count + 1
     dispatch(a.increaseCounter(newCount));
   }
+
+  const onClickingYes = () => {
+    //   //add restaurant id to liked movie array where doc.id === user.id
+    //   //counter goes up
+    //   const userLikedRestaurants = firestore.collection('users').doc(currentUserId).get().then(doc => {
+    //     doc.data().likedRestaurants
+    //   })
+    //   console.log(userLikedRestaurants)
+    //   const propertiesToUpdate = {
+    //     likedRestaurants: 
+    //   }
+    //   return firestore
+    //     .update(
+    //       {
+    //         collection: 'users',
+    //         doc: currentUserId
+    //       },
+    //       propertiesToUpdate)
+    //     .then(
+    counterGoesUp()
+    //     )
+  }
+
+
 
   if (isLoaded(restaurants)) {
     const renderList = restaurants.map((restaurant) => {
@@ -73,7 +90,7 @@ const RestaurantHome = (props) => {
         <>{renderList[count]}</>
         <div className="ui centered grid">
           <div style={buttonStyles} className="ui large buttons">
-            <button onClick={addToLikedRestaurants} className="ui button"><i className="thumbs up outline icon"></i>Yes</button>
+            <button onClick={onClickingYes} className="ui button"><i className="thumbs up outline icon"></i>Yes</button>
             <div className="or"></div>
             <button onClick={counterGoesUp} className="ui button"><i className="thumbs down outline icon"></i>No</button>
           </div>
