@@ -29,13 +29,14 @@ const RestaurantHome = (props) => {
 
   const currentUserId = props.currentUser.uid;
   const restaurants = useSelector(state => state.firestore.ordered.restaurants);
+  const users = useSelector(state => state.firestore.ordered.users);
   const count = useSelector(state => state.counter.count);
   console.log("Current User", currentUserId);
   console.log("Restaurants", restaurants);
   console.log("Count", count);
+  console.log("Users", users);
 
-  const userLikedRestaurants = firestore.collection('users').doc(currentUserId).where(doc => doc.data().likedRestaurants)
-  console.log("User Liked Array", userLikedRestaurants)
+
 
   const counterGoesUp = () => {
     const newCount = count + 1
@@ -45,23 +46,27 @@ const RestaurantHome = (props) => {
   const onClickingYes = () => {
     //   //add restaurant id to liked movie array where doc.id === user.id
     //   //counter goes up
-    //   const userLikedRestaurants = firestore.collection('users').doc(currentUserId).get().then(doc => {
-    //     doc.data().likedRestaurants
-    //   })
-    //   console.log(userLikedRestaurants)
-    //   const propertiesToUpdate = {
-    //     likedRestaurants: 
-    //   }
-    //   return firestore
-    //     .update(
-    //       {
-    //         collection: 'users',
-    //         doc: currentUserId
-    //       },
-    //       propertiesToUpdate)
-    //     .then(
+    firestore
+      .collection('users')
+      .doc(currentUserId)
+      .get()
+      .then((doc) => {
+        const prevLikedArray = doc.data()['likedRestaurants']
+        const propertiesToUpdate = {
+          likedRestaurants: [...prevLikedArray, restaurants[count]['id']]
+        }
+        return (
+          firestore
+            .update(
+              {
+                collection: 'users',
+                doc: currentUserId,
+              },
+              propertiesToUpdate
+            )
+        )
+      })
     counterGoesUp()
-    //     )
   }
 
 
