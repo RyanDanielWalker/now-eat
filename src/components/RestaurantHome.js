@@ -31,12 +31,6 @@ const RestaurantHome = (props) => {
   const restaurants = useSelector(state => state.firestore.ordered.restaurants);
   const users = useSelector(state => state.firestore.ordered.users);
   const count = useSelector(state => state.counter.count);
-  console.log("Current User", currentUserId);
-  console.log("Restaurants", restaurants);
-  console.log("Count", count);
-  console.log("Users", users);
-
-
 
   const counterGoesUp = () => {
     const newCount = count + 1
@@ -44,34 +38,39 @@ const RestaurantHome = (props) => {
   }
 
   const onClickingYes = () => {
-    //return all of the current users likedArray choices and update the array with the current restaurant choice
-    //counter goes up
     firestore
       .collection('users')
       .doc(currentUserId)
       .get()
       .then((doc) => {
+        const currentRestaurantId = restaurants[count]['id']
         const prevLikedArray = doc.data().likedRestaurants
-        const propertiesToUpdate = {
-          likedRestaurants: [...prevLikedArray, restaurants[count]['id']]
+        if (!prevLikedArray.includes(currentRestaurantId)) {
+          const propertiesToUpdate = {
+            likedRestaurants: [...prevLikedArray, currentRestaurantId]
+          }
+          return (
+            firestore
+              .update(
+                {
+                  collection: 'users',
+                  doc: currentUserId,
+                },
+                propertiesToUpdate
+              )
+          )
         }
-        return (
-          firestore
-            .update(
-              {
-                collection: 'users',
-                doc: currentUserId,
-              },
-              propertiesToUpdate
-            )
-        )
       })
     counterGoesUp()
   }
 
+  if (isLoaded(restaurants, users)) {
 
+    console.log("Restaurants", restaurants)
+    console.log("Current User", currentUserId);
+    console.log("Count", count);
+    console.log("Users", users);
 
-  if (isLoaded(restaurants)) {
     const renderList = restaurants.map((restaurant) => {
       const { image, name, rating, zip, url, id } = restaurant;
       return (
