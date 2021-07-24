@@ -17,16 +17,22 @@ const Friends = () => {
   console.log("Users", users)
   if (isLoaded(users)) {
     const userList = users.map((user) => {
-      const { username, index } = user;
+      const { username, id } = user;
       return (
-        <div key={index}>
-          <h1>{username}</h1>
-        </div>
+        <option key={id} value={username}>{username}</option>
       )
     })
     return (
       <React.Fragment>
-        <>{userList}</>
+        <div className="ui form">
+          <div className="field">
+            <label>Select Friend</label>
+            <select className="ui search dropdown">
+              <option value="">Select Friend</option>
+              {userList}
+            </select>
+          </div>
+        </div>
       </React.Fragment>
     )
   } else {
