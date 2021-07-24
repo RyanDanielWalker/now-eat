@@ -7,12 +7,15 @@ const SignOut = () => {
   const history = useHistory();
 
   const doSignOut = () => {
-    firebase.auth().signOut().then(function () {
-      // console.log("Successfully signed out!");
-      history.push('/');
-    }).catch(function (error) {
-      // console.log(error.message);
-    });
+    firebase
+      .auth()
+      .signOut()
+      .then(function () {
+        // console.log("Successfully signed out!");
+        history.push('/');
+      }).catch(function (error) {
+        console.log(error.message);
+      });
   }
 
   return (

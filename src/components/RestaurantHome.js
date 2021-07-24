@@ -36,11 +36,11 @@ const RestaurantHome = (props) => {
   const count = useSelector(state => state.counter.count);
 
   const addToLikedRestaurants = () => {
-    if (!firestoreUsers.includes(currentUserId)) {
-      firestore.collection('users').add({ currentUserId })
-    } else {
-      console.log("This user's list already exists")
-    }
+    firestore.collection('users').where("id", "array-contains", currentUserId).add(
+      {
+        likedRestaurants: restaurants[count].id
+      }
+    )
     counterGoesUp();
   }
 
