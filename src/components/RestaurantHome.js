@@ -44,14 +44,14 @@ const RestaurantHome = (props) => {
   }
 
   const onClickingYes = () => {
-    //   //add restaurant id to liked movie array where doc.id === user.id
-    //   //counter goes up
+    //return all of the current users likedArray choices and update the array with the current restaurant choice
+    //counter goes up
     firestore
       .collection('users')
       .doc(currentUserId)
       .get()
       .then((doc) => {
-        const prevLikedArray = doc.data()['likedRestaurants']
+        const prevLikedArray = doc.data().likedRestaurants
         const propertiesToUpdate = {
           likedRestaurants: [...prevLikedArray, restaurants[count]['id']]
         }
