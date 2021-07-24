@@ -37,6 +37,8 @@ const RestaurantHome = (props) => {
     dispatch(a.increaseCounter(newCount));
   }
 
+
+
   const onClickingYes = () => {
     firestore
       .collection('users')

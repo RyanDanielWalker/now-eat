@@ -2,6 +2,7 @@ import React from 'react';
 import { withFirestore, isLoaded } from 'react-redux-firebase'
 import firebase from 'firebase/app';
 import RestaurantHome from './RestaurantHome';
+import Friends from './Friends';
 import SignIn from './users/SignIn';
 
 
@@ -24,7 +25,8 @@ const Home = () => {
   }
   if ((isLoaded(auth)) && (auth.currentUser != null)) {
     return (
-      <RestaurantHome currentUser={currentUser} />
+      // <RestaurantHome currentUser={currentUser} />
+      <Friends />
     )
   }
 }

@@ -8,6 +8,7 @@ import SignUp from './users/SignUp'
 import SignOut from './users/SignOut'
 import RestaurantHome from './RestaurantHome';
 import Home from './Home';
+import Friends from './Friends';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/signup" exact component={SignUp} />
           <Route path="/signout" exact component={SignOut} />
           <Route path="/restaurant_home" exact component={RestaurantHome} />
+          <Route path="/friends" exact component={Friends} />
         </Switch>
       </Container>
     </Router>
