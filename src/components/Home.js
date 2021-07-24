@@ -8,7 +8,7 @@ import SignIn from './users/SignIn';
 const Home = () => {
 
   const auth = firebase.auth();
-  console.log("authUser", auth.currentUser)
+  const currentUser = auth.currentUser
 
   if (!isLoaded(auth)) {
     return (
@@ -25,7 +25,7 @@ const Home = () => {
   if ((isLoaded(auth)) && (auth.currentUser != null)) {
   }
   return (
-    <RestaurantHome />
+    <RestaurantHome currentUser={currentUser} />
   )
 }
 

@@ -1,10 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { withFirestore, useFirestoreConnect, isLoaded } from 'react-redux-firebase';
+import { withFirestore, useFirestoreConnect, isLoaded, useFirestore } from 'react-redux-firebase';
 import Restaurant from './Restaurant';
 import * as a from '../actions';
+import PropTypes from 'prop-types';
 
-const RestaurantHome = () => {
+const RestaurantHome = (props) => {
   //filter 'const restaurants' to only include restaurants that are not in users liked restaurants array.
   //Add new user collection if one does not exist based on the currently logged in user.
 
@@ -20,18 +21,30 @@ const RestaurantHome = () => {
     marginBottom: '5vw'
   }
 
+  const firestore = useFirestore()
+  const dispatch = useDispatch()
   useFirestoreConnect([
     { collection: 'restaurants' },
     { collection: 'users' }
   ]);
 
-  const dispatch = useDispatch()
+  const currentUserId = props.currentUser.uid;
+  console.log("Current User ID", currentUserId)
+  const firestoreUsers = useSelector(state => state.firestore.ordered.users)
+  console.log("Firestore user list", firestoreUsers)
   const restaurants = useSelector(state => state.firestore.ordered.restaurants);
   const count = useSelector(state => state.counter.count);
-  console.log(restaurants);
-  console.log(count);
 
-  const clickButton = () => {
+  const addToLikedRestaurants = () => {
+    if (!firestoreUsers.includes(currentUserId)) {
+      firestore.collection('users').add({ currentUserId })
+    } else {
+      console.log("This user's list already exists")
+    }
+    counterGoesUp();
+  }
+
+  const counterGoesUp = () => {
     const newCount = count + 1
     dispatch(a.increaseCounter(newCount));
   }
@@ -60,9 +73,9 @@ const RestaurantHome = () => {
         <>{renderList[count]}</>
         <div className="ui centered grid">
           <div style={buttonStyles} className="ui large buttons">
-            <button onClick={clickButton} className="ui button"><i className="thumbs up outline icon"></i>Yes</button>
+            <button onClick={addToLikedRestaurants} className="ui button"><i className="thumbs up outline icon"></i>Yes</button>
             <div className="or"></div>
-            <button onClick={clickButton} className="ui button"><i className="thumbs down outline icon"></i>No</button>
+            <button onClick={counterGoesUp} className="ui button"><i className="thumbs down outline icon"></i>No</button>
           </div>
         </div>
       </React.Fragment>
@@ -74,6 +87,10 @@ const RestaurantHome = () => {
       </React.Fragment>
     )
   }
+}
+
+RestaurantHome.propTypes = {
+  currentUser: PropTypes.object
 }
 
 export default withFirestore(RestaurantHome)
