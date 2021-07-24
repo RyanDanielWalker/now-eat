@@ -1,12 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { withFirestore, useFirestoreConnect, isLoaded, useFirestore } from 'react-redux-firebase';
+import { withFirestore, useFirestoreConnect, isLoaded } from 'react-redux-firebase';
 import Restaurant from './Restaurant';
 import * as a from '../actions';
 
-const RestaurantList = () => {
-
-  const firestore = useFirestore();
+const RestaurantHome = () => {
+  //filter 'const restaurants' to only include restaurants that are not in users liked restaurants array.
+  //Add new user collection if one does not exist based on the currently logged in user.
 
   const cardStyles = {
     padding: '10px',
@@ -22,7 +22,7 @@ const RestaurantList = () => {
 
   useFirestoreConnect([
     { collection: 'restaurants' },
-    { collection: 'likedRestaurants' }
+    { collection: 'users' }
   ]);
 
   const dispatch = useDispatch()
@@ -34,7 +34,6 @@ const RestaurantList = () => {
   const clickButton = () => {
     const newCount = count + 1
     dispatch(a.increaseCounter(newCount));
-    firestore.collection('likedRestaurants').add(restaurants[count])
   }
 
   if (isLoaded(restaurants)) {
@@ -77,4 +76,4 @@ const RestaurantList = () => {
   }
 }
 
-export default withFirestore(RestaurantList)
+export default withFirestore(RestaurantHome)
