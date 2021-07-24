@@ -50,14 +50,13 @@ const RestaurantHome = (props) => {
             likedRestaurants: [...prevLikedArray, currentRestaurantId]
           }
           return (
-            firestore
-              .update(
-                {
-                  collection: 'users',
-                  doc: currentUserId,
-                },
-                propertiesToUpdate
-              )
+            firestore.update(
+              {
+                collection: 'users',
+                doc: currentUserId,
+              },
+              propertiesToUpdate
+            )
           )
         }
       })

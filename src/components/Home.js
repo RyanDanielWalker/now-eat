@@ -23,10 +23,10 @@ const Home = () => {
     )
   }
   if ((isLoaded(auth)) && (auth.currentUser != null)) {
+    return (
+      <RestaurantHome currentUser={currentUser} />
+    )
   }
-  return (
-    <RestaurantHome currentUser={currentUser} />
-  )
 }
 
 export default withFirestore(Home);

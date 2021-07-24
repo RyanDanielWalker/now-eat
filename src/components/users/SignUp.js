@@ -17,6 +17,7 @@ const SignUp = () => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
+    const username = event.target.username.value;
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -26,7 +27,9 @@ const SignUp = () => {
             .collection('users')
             .doc(cred.user.uid)
             .set({
-              likedRestaurants: []
+              username: username,
+              likedRestaurants: [],
+              friends: []
             })
         )
       }).catch(function (error) {
@@ -43,11 +46,19 @@ const SignUp = () => {
           type='text'
           name='email'
           placeholder='email'
+          required='required'
         />
         <input
           type='password'
           name='password'
           placeholder='password'
+          required='required'
+        />
+        <input
+          type='text'
+          name='username'
+          placeholder='username'
+          required='required'
         />
         <button type='submit'>Sign up</button>
       </form>

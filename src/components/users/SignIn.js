@@ -15,7 +15,7 @@ const SignIn = () => {
       // console.log("successfully signed in!");
       history.push('/');
     }).catch(function (error) {
-      console.log(error.message);
+      console.log("Error", error.message);
     });
   }
 
