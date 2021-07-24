@@ -1,10 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { withFirestore, useFirestoreConnect, isLoaded } from 'react-redux-firebase';
+import { withFirestore, useFirestoreConnect, isLoaded, useFirestore } from 'react-redux-firebase';
 import Restaurant from './Restaurant';
 import * as a from '../actions';
 
 const RestaurantList = () => {
+
+  const firestore = useFirestore();
 
   const cardStyles = {
     padding: '10px',
@@ -12,7 +14,6 @@ const RestaurantList = () => {
     width: '17vw',
     marginTop: '5vw',
     marginBottom: '3vw',
-    //   boxShadow: '5px 5px 5px #AF9E0C'
   }
 
   const buttonStyles = {
@@ -20,7 +21,8 @@ const RestaurantList = () => {
   }
 
   useFirestoreConnect([
-    { collection: 'restaurants' }
+    { collection: 'restaurants' },
+    { collection: 'likedRestaurants' }
   ]);
 
   const dispatch = useDispatch()
@@ -32,6 +34,7 @@ const RestaurantList = () => {
   const clickButton = () => {
     const newCount = count + 1
     dispatch(a.increaseCounter(newCount));
+    firestore.collection('likedRestaurants').add(restaurants[count])
   }
 
   if (isLoaded(restaurants)) {
@@ -47,7 +50,6 @@ const RestaurantList = () => {
             url={url}
             id={id}
             key={id}
-            clickButton={clickButton}
             cardStyles={cardStyles}
             buttonStyles={buttonStyles}
           />

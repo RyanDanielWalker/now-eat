@@ -1,9 +1,9 @@
 import * as c from "./ActionTypes"
 
-export const setRestaurants = (restaurants) => {
+export const setRestaurants = (restaurant) => {
   return {
-    type: c.SET_RESTAURANTS,
-    restaurants
+    type: c.LIKE_RESTAURANT,
+    restaurant
   }
 }
 

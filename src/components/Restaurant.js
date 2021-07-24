@@ -11,10 +11,10 @@ const Restaurant = (props) => {
         <div className="header">
           <a href={props.url} target="blank" rel="noopener noreferrer">{props.name}</a>
         </div>
+        <div className="meta">{props.zip}</div>
         <div className="meta">
           <span className="rating">Rating: {props.rating}/5</span>
         </div>
-        <div className="meta">{props.zip}</div>
       </div>
     </div>
   )
@@ -29,7 +29,6 @@ Restaurant.propTypes = {
   id: PropTypes.string,
   cardStyles: PropTypes.object,
   buttonStyles: PropTypes.object,
-  clickButton: PropTypes.func
 }
 
 export default Restaurant;
