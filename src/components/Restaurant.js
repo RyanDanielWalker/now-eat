@@ -3,25 +3,18 @@ import PropTypes from 'prop-types';
 
 const Restaurant = (props) => {
   return (
-    <div className="ui cards" key={props.id}>
-      <div style={props.cardStyles} className="card" >
-        <div className="image">
-          <img src={props.image} alt={`food from ${props.name}`} />
-        </div >
-        <div className="content">
-          <div className="header">
-            <a href={props.url} target="blank" rel="noopener noreferrer">{props.name}</a>
-          </div>
-          <div className="meta">
-            <span className="rating">Rating: {props.rating}/5</span>
-          </div>
-          <div className="meta">{props.zip}</div>
+    <div style={props.cardStyles} className="ui centered card" key={props.id}>
+      <div className="image">
+        <img src={props.image} alt={`food from ${props.name}`} />
+      </div >
+      <div className="content">
+        <div className="header">
+          <a href={props.url} target="blank" rel="noopener noreferrer">{props.name}</a>
         </div>
-      </div>
-      <div style={props.buttonStyles} className="ui large buttons">
-        <button onClick={props.clickButton} className="ui button"><i className="thumbs up outline icon"></i>Yes</button>
-        {/* <div className="or"></div> */}
-        <button onClick={props.clickButton} className="ui button"><i className="thumbs down outline icon"></i>No</button>
+        <div className="meta">
+          <span className="rating">Rating: {props.rating}/5</span>
+        </div>
+        <div className="meta">{props.zip}</div>
       </div>
     </div>
   )

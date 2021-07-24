@@ -8,18 +8,15 @@ const RestaurantList = () => {
 
   const cardStyles = {
     padding: '10px',
-    textAlign: 'center',
-    margin: 'auto',
-    width: '50vw',
+    minWidth: '275px',
+    width: '17vw',
     marginTop: '5vw',
-    boxShadow: '5px 5px 5px #AF9E0C'
+    marginBottom: '3vw',
+    //   boxShadow: '5px 5px 5px #AF9E0C'
   }
 
   const buttonStyles = {
-    margin: 'auto',
-    width: '25%',
-    marginTop: '20px',
-    display: 'block',
+    marginBottom: '5vw'
   }
 
   useFirestoreConnect([
@@ -41,7 +38,7 @@ const RestaurantList = () => {
     const renderList = restaurants.map((restaurant) => {
       const { image, name, rating, zip, url, id } = restaurant;
       return (
-        <div className="ui two column centered grid">
+        <div className="ui centered grid">
           <Restaurant
             image={image}
             name={name}
@@ -60,6 +57,13 @@ const RestaurantList = () => {
     return (
       <React.Fragment>
         <>{renderList[count]}</>
+        <div className="ui centered grid">
+          <div style={buttonStyles} className="ui large buttons">
+            <button onClick={clickButton} className="ui button"><i className="thumbs up outline icon"></i>Yes</button>
+            <div className="or"></div>
+            <button onClick={clickButton} className="ui button"><i className="thumbs down outline icon"></i>No</button>
+          </div>
+        </div>
       </React.Fragment>
     )
   } else {
