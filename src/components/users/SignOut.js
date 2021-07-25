@@ -16,11 +16,12 @@ const SignOut = () => {
       .then(function () {
         const newCount = 0
         dispatch(a.setCounter(newCount))
+        dispatch(a.userSignOut())
         // console.log("Successfully signed out!");
       }).catch(function (error) {
         console.log("Signout Error", error.message);
       });
-    history.push('/');
+    history.push('/signin');
   }
 
   return (

@@ -10,7 +10,7 @@ const Home = () => {
 
   const auth = firebase.auth();
   const currentUser = auth.currentUser
-  console.log("Init currentUser", currentUser)
+
 
   if (!isLoaded(auth)) {
     return (

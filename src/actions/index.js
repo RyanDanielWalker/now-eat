@@ -6,3 +6,15 @@ export const setCounter = (newCount) => {
     newCount
   }
 }
+
+export const userSignOut = () => {
+  return {
+    type: c.SIGN_OUT
+  }
+}
+
+export const userSignIn = () => {
+  return {
+    type: c.SIGN_IN
+  }
+}

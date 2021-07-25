@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import firebase from 'firebase/app';
-
+import { useDispatch } from 'react-redux';
+import * as a from './../../actions'
 
 const SignIn = () => {
-
+  const dispatch = useDispatch();
   const history = useHistory();
 
   const doSignIn = (event) => {
@@ -12,11 +13,12 @@ const SignIn = () => {
     const email = event.target.signInEmail.value;
     const password = event.target.signInPassword.value;
     firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
+      dispatch(a.userSignIn())
       // console.log("successfully signed in!");
-      history.push('/');
     }).catch(function (error) {
       console.log("Error", error.message);
     });
+    history.push('/');
   }
 
   return (
