@@ -12,12 +12,15 @@ const SignIn = () => {
     event.preventDefault();
     const email = event.target.signInEmail.value;
     const password = event.target.signInPassword.value;
-    firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
-      dispatch(a.userSignIn())
-      // console.log("successfully signed in!");
-    }).catch(function (error) {
-      console.log("Error", error.message);
-    });
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        dispatch(a.userSignIn(email))
+        // console.log("successfully signed in!");
+      }).catch((error) => {
+        console.log("Error", error.message);
+      });
     history.push('/');
   }
 

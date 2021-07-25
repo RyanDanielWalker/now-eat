@@ -6,8 +6,8 @@ import { useSelector } from "react-redux";
 
 
 const Header = () => {
-  const currentUser = useSelector(state => state.account.signedIn)
-  console.log(currentUser)
+  const account = useSelector(state => state.account)
+  console.log(account)
   return (
     <Navbar expand="lg" bg="dark" variant="dark">
       <Container>
@@ -17,19 +17,26 @@ const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto"></Nav>
           <Nav>
-            {currentUser === false &&
+            <Nav.Link as={Link} to="/signup">
+              Sign Up
+            </Nav.Link>
+            {account.signedIn === false &&
               <Nav.Link as={Link} to="/signin">
                 Sign In
               </Nav.Link>
             }
-            <Nav.Link as={Link} to="/signup">
-              Sign Up
-            </Nav.Link>
-            {currentUser &&
+            {account.signedIn &&
               <Nav.Link as={Link} to="/signout">
                 Sign Out
               </Nav.Link>
             }
+            {account.signedIn &&
+              <Nav.Link>
+                {account.username}
+                {/* <i className="user secret icon">{account.username}</i> */}
+              </Nav.Link>
+            }
+
           </Nav>
 
         </Navbar.Collapse>

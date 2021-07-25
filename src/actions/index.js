@@ -13,8 +13,9 @@ export const userSignOut = () => {
   }
 }
 
-export const userSignIn = () => {
+export const userSignIn = (username) => {
   return {
-    type: c.SIGN_IN
+    type: c.SIGN_IN,
+    username
   }
 }
