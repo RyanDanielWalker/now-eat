@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
   const account = useSelector(state => state.account)
-  console.log("Account", account)
+  console.log("Header Account log", account)
   return (
     <Navbar expand="lg" bg="dark" variant="dark">
       <Container>

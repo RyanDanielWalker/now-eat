@@ -1,16 +1,15 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useFirestoreConnect, isLoaded } from 'react-redux-firebase';
 import * as a from './../actions';
-import { useHistory } from 'react-router';
+// import { useHistory } from 'react-router';
 
 const Friends = () => {
   //choose from list which friend you would like to see matches for
   //set state value of pairedFriend to user chosen 
 
   // const firestore = useFirestore()
-  // const dispatch = useDispatch()
-  const history = useHistory()
+  const dispatch = useDispatch()
 
   useFirestoreConnect([
     { collection: 'restaurants' },
@@ -18,9 +17,9 @@ const Friends = () => {
   ]);
 
   const users = useSelector(state => state.firestore.ordered.users);
-  console.log("Users", users)
   if (isLoaded(users)) {
     const userList = users.map((user) => {
+      console.log("Users", users)
       const { username, id } = user;
       return (
         <option key={id} value={username}>{username}</option>
@@ -28,7 +27,7 @@ const Friends = () => {
     })
 
     const toggleEating = () => {
-      a.nowEating()
+      dispatch(a.nowEating())
     }
 
     return (
@@ -44,8 +43,8 @@ const Friends = () => {
               </select>
             </div>
           </div>
-          <button onClick={toggleEating} type="submit">Start</button>
         </form>
+        <button onClick={toggleEating} type="submit">Start</button>
       </React.Fragment>
     )
   } else {

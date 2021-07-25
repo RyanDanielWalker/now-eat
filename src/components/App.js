@@ -12,6 +12,7 @@ import Home from './Home';
 import Friends from './Friends';
 
 const App = () => {
+
   return (
     <Router>
       <Header />
