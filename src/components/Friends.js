@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { withFirestore, useFirestoreConnect, isLoaded, useFirestore } from 'react-redux-firebase';
+import { useFirestoreConnect, isLoaded } from 'react-redux-firebase';
 
 const Friends = () => {
   //choose from list which friend you would like to see matches for
