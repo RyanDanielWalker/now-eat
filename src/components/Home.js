@@ -12,7 +12,7 @@ const Home = () => {
   const auth = firebase.auth();
   const currentUser = auth.currentUser;
   const eatingStatus = useSelector(state => state.account.eating);
-  console.log("HOME USER", currentUser)
+  // console.log("HOME USER", currentUser)
 
   if (!isLoaded(auth)) {
     return (

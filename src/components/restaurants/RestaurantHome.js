@@ -6,14 +6,6 @@ import RestaurantButtons from './RestaurantButtons';
 import * as a from '../../actions';
 import PropTypes from 'prop-types';
 
-const cardStyles = {
-  padding: '10px',
-  minWidth: '275px',
-  width: '17vw',
-  marginTop: '5vw',
-  marginBottom: '3vw',
-}
-
 const RestaurantHome = (props) => {
   const { currentUser } = props;
 
@@ -29,10 +21,23 @@ const RestaurantHome = (props) => {
   const users = useSelector(state => state.firestore.ordered.users);
   const count = useSelector(state => state.counter.count);
 
-  const counterGoesUp = () => {
+  const increaseCounter = () => {
     const newCount = count + 1
     dispatch(a.setCounter(newCount));
   }
+
+  ///////////////////////////////////////////////////////////
+  ////////////////////// WAR ZONE ///////////////////////////
+  ///////////////////////////////////////////////////////////
+  // const renderMatchBox = (currentFriend)
+  // const renderMatches = () => {
+  //   //currentRestaurantId
+  //   //currentFriend username
+  //   //
+  //   return (
+  //     <Matches />
+  //   )
+  // }
 
   const handleClickingYes = () => {
     firestore
@@ -43,12 +48,19 @@ const RestaurantHome = (props) => {
         const currentRestaurantId = restaurants[count]['id']
         const prevLikedArray = doc.data().likedRestaurants
         const friendRestaurantArray = doc.data().friendRestaurantArray
+        const prevMatchedRestaurantArray = doc.data().matchedRestaurantArray
         if (!prevLikedArray.includes(currentRestaurantId)) {
+          let propertiesToUpdate;
           if (friendRestaurantArray.includes(currentRestaurantId)) {
             console.log("MOTHER FREAKIN' MATCH!")
-          }
-          const propertiesToUpdate = {
-            likedRestaurants: [...prevLikedArray, currentRestaurantId]
+            propertiesToUpdate = {
+              likedRestaurants: [...prevLikedArray, currentRestaurantId],
+              matchedRestaurantArray: [...prevMatchedRestaurantArray, currentRestaurantId]
+            }
+          } else {
+            propertiesToUpdate = {
+              likedRestaurants: [...prevLikedArray, currentRestaurantId],
+            }
           }
           return (
             firestore.update({
@@ -59,18 +71,8 @@ const RestaurantHome = (props) => {
             )
           )
         }
-      }).then(counterGoesUp())
+      }).then(increaseCounter())
   }
-
-  ///////////////////////////////////////////////////////////
-  ////////////////////// WAR ZONE ///////////////////////////
-  ///////////////////////////////////////////////////////////
-
-  // const handleCheckingForMatches = () => {
-  //   //if yes, look inside likedRestaurants array and friendRestaurantArray of current user
-  //   //if same restaurant id occurs in both, alert match
-  //   if ()
-  // }
 
   if (isLoaded(restaurants, users)) {
 
@@ -85,7 +87,6 @@ const RestaurantHome = (props) => {
           url={url}
           id={id}
           key={id}
-          cardStyles={cardStyles}
         />
       )
     })
@@ -97,7 +98,7 @@ const RestaurantHome = (props) => {
         <div className="ui centered grid">
           <RestaurantButtons
             onClickingYes={handleClickingYes}
-            counterGoesUp={counterGoesUp} />
+            increaseCounter={increaseCounter} />
         </div>
       </React.Fragment>
     )
