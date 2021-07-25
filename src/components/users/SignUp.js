@@ -31,7 +31,7 @@ const SignUp = () => {
             .set({
               username: username,
               likedRestaurants: [],
-              friend: null
+              currentFriend: null
             })
           )
         )

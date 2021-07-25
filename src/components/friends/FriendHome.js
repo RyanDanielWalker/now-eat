@@ -36,12 +36,13 @@ const FriendHome = (props) => {
       .doc(selectedFriendId)
       .get()
       .then((doc) => {
-        const selectedFriendRestaurantArray = doc.data().likedRestaurants
-        // const selectedFriendUserName = doc.data().userName
+        const docData = doc.data();
+        const selectedFriendRestaurantArray = docData.likedRestaurants;
+        const selectedFriendUserName = docData.username;
         const propertiesToUpdate = {
           friendRestaurantArray: [...selectedFriendRestaurantArray],
-          // selectedFriendUserName: selectedFriendUserName
-        }
+          currentFriend: selectedFriendUserName
+        };
         return (
           firestore.update({
             collection: 'users',
@@ -51,7 +52,7 @@ const FriendHome = (props) => {
           )
         )
       }).then(toggleEating())
-  }
+  };
 
   if (isLoaded(users)) {
     return (
