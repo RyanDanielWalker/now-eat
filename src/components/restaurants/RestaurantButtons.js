@@ -6,7 +6,7 @@ const buttonStyles = {
 }
 
 const RestaurantButtons = (props) => {
-  const { onClickingYes, counterGoesUp } = props;
+  const { onClickingYes, increaseCounter } = props;
   return (
     <div style={buttonStyles} className="ui large buttons">
       <button onClick={onClickingYes} className="ui button">
@@ -14,7 +14,7 @@ const RestaurantButtons = (props) => {
         Yes
       </button>
       <div className="or"></div>
-      <button onClick={counterGoesUp} className="ui button">
+      <button onClick={increaseCounter} className="ui button">
         <i className="thumbs down outline icon"></i>
         No
       </button>
@@ -24,7 +24,7 @@ const RestaurantButtons = (props) => {
 
 RestaurantButtons.propTypes = {
   onClickingYes: PropTypes.func,
-  counterGoesUp: PropTypes.func
+  increaseCounter: PropTypes.func
 }
 
 export default RestaurantButtons;

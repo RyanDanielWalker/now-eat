@@ -31,17 +31,17 @@ const SignUp = () => {
             .set({
               username: username,
               likedRestaurants: [],
-              currentFriend: null
+              currentFriend: null,
+              matchedRestaurantArray: [],
+              friendRestaurantArray: []
             })
           )
         )
-      }).catch(function (error) {
+      }).catch((error) => {
         alert(error.message);
-      });
+      })
     history.push('/')
   }
-
-
 
   return (
     <div>

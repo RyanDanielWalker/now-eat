@@ -90,6 +90,7 @@ const RestaurantHome = (props) => {
         />
       )
     })
+
     return (
       <React.Fragment>
         <div className="ui centered grid">
