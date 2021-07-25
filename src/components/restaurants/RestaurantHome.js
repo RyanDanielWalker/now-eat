@@ -16,7 +16,6 @@ const cardStyles = {
 
 const RestaurantHome = (props) => {
   const { currentUser } = props;
-  //filter 'const restaurants' to only include restaurants that are not in users liked restaurants array.
 
   useFirestoreConnect([
     { collection: 'restaurants' },
@@ -43,7 +42,11 @@ const RestaurantHome = (props) => {
       .then((doc) => {
         const currentRestaurantId = restaurants[count]['id']
         const prevLikedArray = doc.data().likedRestaurants
+        const friendRestaurantArray = doc.data().friendRestaurantArray
         if (!prevLikedArray.includes(currentRestaurantId)) {
+          if (friendRestaurantArray.includes(currentRestaurantId)) {
+            console.log("MOTHER FREAKIN' MATCH!")
+          }
           const propertiesToUpdate = {
             likedRestaurants: [...prevLikedArray, currentRestaurantId]
           }
@@ -59,30 +62,38 @@ const RestaurantHome = (props) => {
       }).then(counterGoesUp())
   }
 
-  if (isLoaded(restaurants, users)) {
+  ///////////////////////////////////////////////////////////
+  ////////////////////// WAR ZONE ///////////////////////////
+  ///////////////////////////////////////////////////////////
 
-    console.log("Count", count);
+  // const handleCheckingForMatches = () => {
+  //   //if yes, look inside likedRestaurants array and friendRestaurantArray of current user
+  //   //if same restaurant id occurs in both, alert match
+  //   if ()
+  // }
+
+  if (isLoaded(restaurants, users)) {
 
     const renderList = restaurants.map((restaurant) => {
       const { image, name, rating, zip, url, id } = restaurant;
       return (
-        <div className="ui centered grid">
-          <Restaurant
-            image={image}
-            name={name}
-            rating={rating}
-            zip={zip}
-            url={url}
-            id={id}
-            key={id}
-            cardStyles={cardStyles}
-          />
-        </div>
+        <Restaurant
+          image={image}
+          name={name}
+          rating={rating}
+          zip={zip}
+          url={url}
+          id={id}
+          key={id}
+          cardStyles={cardStyles}
+        />
       )
     })
     return (
       <React.Fragment>
-        <>{renderList[count]}</>
+        <div className="ui centered grid">
+          <>{renderList[count]}</>
+        </div>
         <div className="ui centered grid">
           <RestaurantButtons
             onClickingYes={handleClickingYes}

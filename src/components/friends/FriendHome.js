@@ -4,7 +4,6 @@ import { useFirestoreConnect, isLoaded, useFirestore, withFirestore } from 'reac
 import * as a from '../../actions';
 import PropTypes from 'prop-types';
 import FriendSelectionForm from './FriendSelectionForm';
-// import { useHistory } from 'react-router';
 
 const FriendHome = (props) => {
 
@@ -22,9 +21,6 @@ const FriendHome = (props) => {
     dispatch(a.nowEating())
   }
 
-  ///////////////////////////////////////////////////////////
-  ////////////////////// WAR ZONE ///////////////////////////
-  ///////////////////////////////////////////////////////////
   const currentUserId = currentUser.uid;
   const users = useSelector(state => state.firestore.ordered.users);
   const formValue = useSelector(state => state.account.formValue.value)
