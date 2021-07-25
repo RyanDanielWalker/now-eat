@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { withFirestore, useFirestoreConnect, isLoaded, useFirestore } from 'react-redux-firebase';
 import Restaurant from './Restaurant';
+import RestaurantButtons from './RestaurantButtons';
 import * as a from '../actions';
 import PropTypes from 'prop-types';
 
@@ -13,12 +14,8 @@ const cardStyles = {
   marginBottom: '3vw',
 }
 
-const buttonStyles = {
-  marginBottom: '5vw'
-}
-
-
 const RestaurantHome = (props) => {
+  const { currentUser } = props;
   //filter 'const restaurants' to only include restaurants that are not in users liked restaurants array.
 
   useFirestoreConnect([
@@ -28,7 +25,7 @@ const RestaurantHome = (props) => {
 
   const firestore = useFirestore()
   const dispatch = useDispatch()
-  const currentUserId = props.currentUser.uid;
+  const currentUserId = currentUser.uid;
   const restaurants = useSelector(state => state.firestore.ordered.restaurants);
   const users = useSelector(state => state.firestore.ordered.users);
   const count = useSelector(state => state.counter.count);
@@ -38,7 +35,7 @@ const RestaurantHome = (props) => {
     dispatch(a.setCounter(newCount));
   }
 
-  const onClickingYes = () => {
+  const handleClickingYes = () => {
     firestore
       .collection('users')
       .doc(currentUserId)
@@ -59,8 +56,7 @@ const RestaurantHome = (props) => {
             )
           )
         }
-      })
-      .then(counterGoesUp())
+      }).then(counterGoesUp())
   }
 
   if (isLoaded(restaurants, users)) {
@@ -80,7 +76,6 @@ const RestaurantHome = (props) => {
             id={id}
             key={id}
             cardStyles={cardStyles}
-            buttonStyles={buttonStyles}
           />
         </div>
       )
@@ -89,17 +84,9 @@ const RestaurantHome = (props) => {
       <React.Fragment>
         <>{renderList[count]}</>
         <div className="ui centered grid">
-          <div style={buttonStyles} className="ui large buttons">
-            <button onClick={onClickingYes} className="ui button">
-              <i className="thumbs up outline icon"></i>
-              Yes
-            </button>
-            <div className="or"></div>
-            <button onClick={counterGoesUp} className="ui button">
-              <i className="thumbs down outline icon"></i>
-              No
-            </button>
-          </div>
+          <RestaurantButtons
+            onClickingYes={handleClickingYes}
+            counterGoesUp={counterGoesUp} />
         </div>
       </React.Fragment>
     )

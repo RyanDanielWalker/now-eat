@@ -7,8 +7,8 @@ import FriendSelectionForm from './FriendSelectionForm';
 // import { useHistory } from 'react-router';
 
 const FriendHome = (props) => {
-  //choose from list which friend you would like to see matches for
-  //set state value of pairedFriend to user chosen 
+
+  const { currentUser } = props;
 
   useFirestoreConnect([
     { collection: 'restaurants' },
@@ -25,14 +25,12 @@ const FriendHome = (props) => {
   ///////////////////////////////////////////////////////////
   ////////////////////// WAR ZONE ///////////////////////////
   ///////////////////////////////////////////////////////////
+  const currentUserId = currentUser.uid;
   const users = useSelector(state => state.firestore.ordered.users);
-  const currentUserId = props.currentUser.uid;
   const formValue = useSelector(state => state.account.formValue.value)
 
   const handleClickingStart = () => {
-    console.log("FORM VALUE", formValue)
     const selectedFriendId = formValue;
-    console.log('SELECTED FRIEND', selectedFriendId)
     firestore
       .collection('users')
       .doc(selectedFriendId)
@@ -52,8 +50,7 @@ const FriendHome = (props) => {
             propertiesToUpdate
           )
         )
-      })
-      .then(toggleEating())
+      }).then(toggleEating())
   }
 
   if (isLoaded(users)) {
