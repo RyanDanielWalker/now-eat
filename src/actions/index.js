@@ -32,9 +32,9 @@ export const nowNotEating = () => {
   }
 }
 
-export const handleFormValueChange = (newValue) => {
+export const handleFormValueChange = (newFormValue) => {
   return {
     type: c.HANDLE_FORM_VALUE_CHANGE,
-    newValue
+    newFormValue
   }
 }

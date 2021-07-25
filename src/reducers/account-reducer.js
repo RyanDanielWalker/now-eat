@@ -3,7 +3,8 @@ import * as c from './../actions/ActionTypes';
 const initialState = {
   signedIn: false,
   username: null,
-  eating: false
+  eating: false,
+  formValue: ""
 }
 
 const accountReducer = (state = initialState, action) => {
@@ -26,10 +27,14 @@ const accountReducer = (state = initialState, action) => {
         ...state,
         eating: false
       }
+    case c.HANDLE_FORM_VALUE_CHANGE:
+      return {
+        ...state,
+        formValue: action.newFormValue
+      };
     default:
-      return state
-
+      return state;
   }
-}
+};
 
 export default accountReducer;

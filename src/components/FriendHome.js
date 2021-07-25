@@ -27,10 +27,11 @@ const FriendHome = (props) => {
   ///////////////////////////////////////////////////////////
   const users = useSelector(state => state.firestore.ordered.users);
   const currentUserId = props.currentUser.uid;
+  const formValue = useSelector(state => state.account.formValue.value)
 
-  const handleSubmittingSelectFriend = (event) => {
-    console.log('EVENT', event);
-    const selectedFriend = event.target.name.value;
+  const handleSubmittingSelectFriend = () => {
+    console.log("FORM VALUE", formValue)
+    const selectedFriend = formValue;
     console.log('SELECTED FRIEND', selectedFriend)
     firestore
       .collection('users')
@@ -39,7 +40,7 @@ const FriendHome = (props) => {
       .then((doc) => {
         const selectedFriendRestaurantArray = doc.data().likedRestaurants
         const propertiesToUpdate = {
-          friendRestaurantArray: selectedFriendRestaurantArray
+          friendRestaurantArray: [...selectedFriendRestaurantArray]
         }
         return (
           firestore.update({
@@ -50,15 +51,14 @@ const FriendHome = (props) => {
           )
         )
       })
-    event.preventDefault();
   }
 
   if (isLoaded(users)) {
     return (
       <React.Fragment>
         <h1>Choose A Friend To Match With</h1>
-        <FriendSelectionForm onSubmittingSelectFriend={handleSubmittingSelectFriend} />
-        <button onClick={toggleEating} type="submit">Start</button>
+        <FriendSelectionForm />
+        <button onClick={handleSubmittingSelectFriend} type="submit">Start</button>
       </React.Fragment>
     )
   } else {
