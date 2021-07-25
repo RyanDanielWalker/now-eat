@@ -29,13 +29,13 @@ const SignUp = () => {
             .set({
               username: username,
               likedRestaurants: [],
-              friends: []
+              friend: null
             })
         )
       }).catch(function (error) {
         alert(error.message);
       });
-    history.push('/signIn')
+    history.push('/')
   }
 
   return (

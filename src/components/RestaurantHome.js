@@ -22,6 +22,7 @@ const RestaurantHome = (props) => {
 
   const firestore = useFirestore()
   const dispatch = useDispatch()
+
   useFirestoreConnect([
     { collection: 'restaurants' },
     { collection: 'users' }
@@ -50,11 +51,10 @@ const RestaurantHome = (props) => {
             likedRestaurants: [...prevLikedArray, currentRestaurantId]
           }
           return (
-            firestore.update(
-              {
-                collection: 'users',
-                doc: currentUserId,
-              },
+            firestore.update({
+              collection: 'users',
+              doc: currentUserId,
+            },
               propertiesToUpdate
             )
           )
@@ -93,9 +93,15 @@ const RestaurantHome = (props) => {
         <>{renderList[count]}</>
         <div className="ui centered grid">
           <div style={buttonStyles} className="ui large buttons">
-            <button onClick={onClickingYes} className="ui button"><i className="thumbs up outline icon"></i>Yes</button>
+            <button onClick={onClickingYes} className="ui button">
+              <i className="thumbs up outline icon"></i>
+              Yes
+            </button>
             <div className="or"></div>
-            <button onClick={counterGoesUp} className="ui button"><i className="thumbs down outline icon"></i>No</button>
+            <button onClick={counterGoesUp} className="ui button">
+              <i className="thumbs down outline icon"></i>
+              No
+            </button>
           </div>
         </div>
       </React.Fragment>

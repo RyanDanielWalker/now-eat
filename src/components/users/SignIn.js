@@ -32,11 +32,13 @@ const SignIn = () => {
           type='text'
           name='signInEmail'
           placeholder='email'
+          required='required'
         />
         <input
           type='password'
           name='signInPassword'
           placeholder='password'
+          required='required'
         />
         <button type='submit'>Sign In</button>
       </form>

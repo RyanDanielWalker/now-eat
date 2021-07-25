@@ -29,7 +29,7 @@ const Home = () => {
   if ((isLoaded(auth)) && (auth.currentUser != null)) {
     let currentlyVisibleState;
     if (!eatingStatus) {
-      currentlyVisibleState = <Friends />
+      currentlyVisibleState = <Friends currentUser={currentUser} />
     } else {
       currentlyVisibleState = <RestaurantHome currentUser={currentUser} />
     }
