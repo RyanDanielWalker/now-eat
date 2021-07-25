@@ -1,11 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useFirestoreConnect, isLoaded, useFirestore, withFirestore } from 'react-redux-firebase';
-import * as a from './../actions';
+import * as a from '../actions';
 import PropTypes from 'prop-types';
+import FriendSelectionForm from './FriendSelectionForm';
 // import { useHistory } from 'react-router';
 
-const Friends = (props) => {
+const FriendHome = (props) => {
   //choose from list which friend you would like to see matches for
   //set state value of pairedFriend to user chosen 
 
@@ -21,9 +22,6 @@ const Friends = (props) => {
     dispatch(a.nowEating())
   }
 
-
-
-
   ///////////////////////////////////////////////////////////
   ////////////////////// WAR ZONE ///////////////////////////
   ///////////////////////////////////////////////////////////
@@ -32,7 +30,6 @@ const Friends = (props) => {
 
   const handleSubmittingSelectFriend = (event) => {
     console.log('EVENT', event);
-    event.preventDefault();
     const selectedFriend = event.target.name.value;
     console.log('SELECTED FRIEND', selectedFriend)
     firestore
@@ -53,31 +50,14 @@ const Friends = (props) => {
           )
         )
       })
+    event.preventDefault();
   }
 
   if (isLoaded(users)) {
-    const userList = users.map((user) => {
-      console.log("Users", users)
-      const { username, id } = user;
-      return (
-        <option key={id} name={id} value={id}>{username}</option>
-      )
-    })
     return (
       <React.Fragment>
         <h1>Choose A Friend To Match With</h1>
-        <form onSubmit={handleSubmittingSelectFriend}>
-          <div className="ui form">
-            <div className="field">
-              <label>Select Friend</label>
-              <select value='null' onChange={ } className="ui search dropdown">
-                <option value="">Select Friend</option>
-                {userList}
-              </select>
-            </div>
-          </div>
-          <button type='submit'>Select</button>
-        </form>
+        <FriendSelectionForm onSubmittingSelectFriend={handleSubmittingSelectFriend} />
         <button onClick={toggleEating} type="submit">Start</button>
       </React.Fragment>
     )
@@ -90,8 +70,8 @@ const Friends = (props) => {
   }
 }
 
-Friends.propTypes = {
+FriendHome.propTypes = {
   currentUser: PropTypes.object
 }
 
-export default withFirestore(Friends);
+export default withFirestore(FriendHome);

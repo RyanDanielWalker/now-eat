@@ -31,3 +31,10 @@ export const nowNotEating = () => {
     type: c.NOW_NOT_EATING
   }
 }
+
+export const handleFormValueChange = (newValue) => {
+  return {
+    type: c.HANDLE_FORM_VALUE_CHANGE,
+    newValue
+  }
+}

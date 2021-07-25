@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { withFirestore, isLoaded } from 'react-redux-firebase'
 import firebase from 'firebase/app';
 import RestaurantHome from './RestaurantHome';
-import Friends from './Friends';
+import FriendHome from './FriendHome';
 import SignIn from './users/SignIn';
 
 
@@ -29,7 +29,7 @@ const Home = () => {
   if ((isLoaded(auth)) && (auth.currentUser != null)) {
     let currentlyVisibleState;
     if (!eatingStatus) {
-      currentlyVisibleState = <Friends currentUser={currentUser} />
+      currentlyVisibleState = <FriendHome currentUser={currentUser} />
     } else {
       currentlyVisibleState = <RestaurantHome currentUser={currentUser} />
     }
