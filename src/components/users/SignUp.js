@@ -1,7 +1,7 @@
 import React from 'react';
 import firebase from 'firebase/app';
 import { Link, useHistory } from 'react-router-dom';
-import { useFirestore, useFirestoreConnect } from 'react-redux-firebase';
+import { useFirestore, useFirestoreConnect, withFirestore } from 'react-redux-firebase';
 
 const SignUp = () => {
 
@@ -68,4 +68,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default withFirestore(SignUp);

@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import firebase from 'firebase/app';
 import { useDispatch } from 'react-redux';
 import * as a from './../../actions'
+import { withFirestore } from 'react-redux-firebase';
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -17,10 +18,10 @@ const SignIn = () => {
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         dispatch(a.userSignIn(email))
+        history.push('/');
       }).catch((error) => {
         console.log("Error", error.message);
       });
-    history.push('/');
   }
 
   return (
@@ -46,4 +47,4 @@ const SignIn = () => {
   )
 };
 
-export default SignIn;
+export default withFirestore(SignIn);

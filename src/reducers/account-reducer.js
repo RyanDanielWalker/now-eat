@@ -9,11 +9,7 @@ const initialState = {
 const accountReducer = (state = initialState, action) => {
   switch (action.type) {
     case c.SIGN_OUT:
-      return {
-        ...state,
-        signedIn: false,
-        username: null
-      }
+      return initialState
     case c.SIGN_IN:
       return {
         ...state,
