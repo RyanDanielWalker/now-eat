@@ -10,17 +10,17 @@ const FriendHome = (props) => {
   //choose from list which friend you would like to see matches for
   //set state value of pairedFriend to user chosen 
 
-  const firestore = useFirestore()
-  const dispatch = useDispatch()
-
   useFirestoreConnect([
     { collection: 'restaurants' },
     { collection: 'users' }
   ]);
 
-  // const toggleEating = () => {
-  //   dispatch(a.nowEating())
-  // }
+  const firestore = useFirestore()
+  const dispatch = useDispatch()
+
+  const toggleEating = () => {
+    dispatch(a.nowEating())
+  }
 
   ///////////////////////////////////////////////////////////
   ////////////////////// WAR ZONE ///////////////////////////
@@ -29,18 +29,20 @@ const FriendHome = (props) => {
   const currentUserId = props.currentUser.uid;
   const formValue = useSelector(state => state.account.formValue.value)
 
-  const handleSubmittingSelectFriend = () => {
+  const handleClickingStart = () => {
     console.log("FORM VALUE", formValue)
-    const selectedFriend = formValue;
-    console.log('SELECTED FRIEND', selectedFriend)
+    const selectedFriendId = formValue;
+    console.log('SELECTED FRIEND', selectedFriendId)
     firestore
       .collection('users')
-      .doc(selectedFriend)
+      .doc(selectedFriendId)
       .get()
       .then((doc) => {
         const selectedFriendRestaurantArray = doc.data().likedRestaurants
+        // const selectedFriendUserName = doc.data().userName
         const propertiesToUpdate = {
-          friendRestaurantArray: [...selectedFriendRestaurantArray]
+          friendRestaurantArray: [...selectedFriendRestaurantArray],
+          // selectedFriendUserName: selectedFriendUserName
         }
         return (
           firestore.update({
@@ -51,7 +53,7 @@ const FriendHome = (props) => {
           )
         )
       })
-      .then(dispatch(a.nowEating()))
+      .then(toggleEating())
   }
 
   if (isLoaded(users)) {
@@ -59,7 +61,7 @@ const FriendHome = (props) => {
       <React.Fragment>
         <h1>Choose A Friend To Match With</h1>
         <FriendSelectionForm />
-        <button onClick={handleSubmittingSelectFriend} type="submit">Start</button>
+        <button onClick={handleClickingStart} type="submit">Start</button>
       </React.Fragment>
     )
   } else {

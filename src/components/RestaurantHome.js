@@ -65,10 +65,7 @@ const RestaurantHome = (props) => {
 
   if (isLoaded(restaurants, users)) {
 
-    console.log("Restaurants", restaurants)
-    console.log("Current User", currentUserId);
     console.log("Count", count);
-    console.log("Users", users);
 
     const renderList = restaurants.map((restaurant) => {
       const { image, name, rating, zip, url, id } = restaurant;

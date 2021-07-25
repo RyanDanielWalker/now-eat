@@ -2,16 +2,14 @@ import React from 'react';
 import { withFirestore, isLoaded } from 'react-redux-firebase';
 import { useSelector, useDispatch } from 'react-redux';
 import * as a from './../actions';
-// import PropTypes from 'prop-types';
 
-const FriendSelectionForm = (props) => {
+const FriendSelectionForm = () => {
 
   const users = useSelector(state => state.firestore.ordered.users);
+  const value = useSelector(state => state.account.value)
   const dispatch = useDispatch()
-  let value = useSelector(state => state.account.value)
 
   const handleValueChange = (event) => {
-    console.log("HANDLECHANGE EVENT LOG", event)
     const newFormValue = { value: event.target.value }
     dispatch(a.handleFormValueChange(newFormValue))
   }
@@ -24,7 +22,7 @@ const FriendSelectionForm = (props) => {
       )
     })
     return (
-      <form onSubmit={props.handleSubmittingSelectFriend}>
+      <form>
         <div className="ui form">
           <div className="field">
             <label>Select Friend</label>
@@ -38,9 +36,5 @@ const FriendSelectionForm = (props) => {
     )
   }
 }
-
-// FriendSelectionForm.propTypes = {
-//   handleSubmittingSelectFriend: PropTypes.func
-// }
 
 export default withFirestore(FriendSelectionForm);

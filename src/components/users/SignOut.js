@@ -16,11 +16,11 @@ const SignOut = () => {
       .signOut()
       .then(function () {
         const newCount = 0
-        dispatch(
-          a.userSignOut(),
-          a.setCounter(newCount))
-          .then(history.push('/'))
-      }).catch(function (error) {
+        dispatch(a.userSignOut())
+        dispatch(a.setCounter(newCount))
+      })
+      .then(history.push('/'))
+      .catch(function (error) {
         console.log("Signout Error", error.message);
       });
   }
