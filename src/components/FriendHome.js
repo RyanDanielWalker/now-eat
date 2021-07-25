@@ -18,9 +18,9 @@ const FriendHome = (props) => {
     { collection: 'users' }
   ]);
 
-  const toggleEating = () => {
-    dispatch(a.nowEating())
-  }
+  // const toggleEating = () => {
+  //   dispatch(a.nowEating())
+  // }
 
   ///////////////////////////////////////////////////////////
   ////////////////////// WAR ZONE ///////////////////////////
@@ -51,6 +51,7 @@ const FriendHome = (props) => {
           )
         )
       })
+      .then(dispatch(a.nowEating()))
   }
 
   if (isLoaded(users)) {

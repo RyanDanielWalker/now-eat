@@ -5,29 +5,29 @@ import Restaurant from './Restaurant';
 import * as a from '../actions';
 import PropTypes from 'prop-types';
 
+const cardStyles = {
+  padding: '10px',
+  minWidth: '275px',
+  width: '17vw',
+  marginTop: '5vw',
+  marginBottom: '3vw',
+}
+
+const buttonStyles = {
+  marginBottom: '5vw'
+}
+
+
 const RestaurantHome = (props) => {
   //filter 'const restaurants' to only include restaurants that are not in users liked restaurants array.
-
-  const cardStyles = {
-    padding: '10px',
-    minWidth: '275px',
-    width: '17vw',
-    marginTop: '5vw',
-    marginBottom: '3vw',
-  }
-
-  const buttonStyles = {
-    marginBottom: '5vw'
-  }
-
-  const firestore = useFirestore()
-  const dispatch = useDispatch()
 
   useFirestoreConnect([
     { collection: 'restaurants' },
     { collection: 'users' }
   ]);
 
+  const firestore = useFirestore()
+  const dispatch = useDispatch()
   const currentUserId = props.currentUser.uid;
   const restaurants = useSelector(state => state.firestore.ordered.restaurants);
   const users = useSelector(state => state.firestore.ordered.users);
@@ -60,7 +60,7 @@ const RestaurantHome = (props) => {
           )
         }
       })
-    counterGoesUp()
+      .then(counterGoesUp())
   }
 
   if (isLoaded(restaurants, users)) {

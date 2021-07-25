@@ -29,6 +29,7 @@ const FriendSelectionForm = (props) => {
           <div className="field">
             <label>Select Friend</label>
             <select value={value} placeholder="Select Friend" onChange={handleValueChange} className="ui search dropdown">
+              <option value="">Choose a Friend</option>
               {userList}
             </select>
           </div>
