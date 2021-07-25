@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useFirestoreConnect, isLoaded } from 'react-redux-firebase';
+import * as a from './../actions';
+import { useHistory } from 'react-router';
 
 const Friends = () => {
   //choose from list which friend you would like to see matches for
@@ -8,6 +10,8 @@ const Friends = () => {
 
   // const firestore = useFirestore()
   // const dispatch = useDispatch()
+  const history = useHistory()
+
   useFirestoreConnect([
     { collection: 'restaurants' },
     { collection: 'users' }
@@ -23,8 +27,9 @@ const Friends = () => {
       )
     })
 
-    //when friend is selected, add friend id to currentUser friend array
-    //
+    const toggleEating = () => {
+      a.nowEating()
+    }
 
     return (
       <React.Fragment>
@@ -39,7 +44,7 @@ const Friends = () => {
               </select>
             </div>
           </div>
-          <button type="submit">Start</button>
+          <button onClick={toggleEating} type="submit">Start</button>
         </form>
       </React.Fragment>
     )

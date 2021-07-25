@@ -15,9 +15,10 @@ const SignOut = () => {
       .signOut()
       .then(function () {
         const newCount = 0
-        dispatch(a.setCounter(newCount))
-        dispatch(a.userSignOut())
-        // console.log("Successfully signed out!");
+        dispatch(
+          a.setCounter(newCount),
+          a.userSignOut(),
+          a.nowNotEating())
       }).catch(function (error) {
         console.log("Signout Error", error.message);
       });

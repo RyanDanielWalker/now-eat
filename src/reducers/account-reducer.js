@@ -2,7 +2,8 @@ import * as c from './../actions/ActionTypes';
 
 const initialState = {
   signedIn: false,
-  username: null
+  username: null,
+  eating: false
 }
 
 const accountReducer = (state = initialState, action) => {
@@ -18,6 +19,16 @@ const accountReducer = (state = initialState, action) => {
         ...state,
         signedIn: true,
         username: action.username
+      }
+    case c.NOW_EATING:
+      return {
+        ...state,
+        eating: true
+      }
+    case c.NOW_NOT_EATING:
+      return {
+        ...state,
+        eating: false
       }
     default:
       return state

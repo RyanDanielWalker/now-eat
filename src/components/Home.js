@@ -1,18 +1,19 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import { withFirestore, isLoaded } from 'react-redux-firebase'
 import firebase from 'firebase/app';
 import RestaurantHome from './RestaurantHome';
 import Friends from './Friends';
 import SignIn from './users/SignIn';
+import { props } from 'bluebird';
 
 
 const Home = () => {
 
   const auth = firebase.auth();
-  const eatingStatus = useSelector(state => state.eating.nowEating)
+  // const eatingStatus = useSelector(state => state.account.eating)
+  // console.log("EATING", eatingStatus)
   const currentUser = auth.currentUser
-
 
   if (!isLoaded(auth)) {
     return (
@@ -27,12 +28,14 @@ const Home = () => {
     )
   }
   if ((isLoaded(auth)) && (auth.currentUser != null)) {
-    if (!eatingStatus) {
-      return (
-        <Friends />
-      )
-    } return (
-      <RestaurantHome currentUser={currentUser} />
+    let currentlyVisibleState;
+    if (!props.eating) {
+      currentlyVisibleState = <Friends />
+    } else {
+      currentlyVisibleState = <RestaurantHome currentUser={currentUser} />
+    }
+    return (
+      <>{currentlyVisibleState}</>
     )
   }
 }
