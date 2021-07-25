@@ -7,9 +7,9 @@ import Header from './Header'
 import SignIn from "./users/SignIn";
 import SignUp from './users/SignUp'
 import SignOut from './users/SignOut'
-import RestaurantHome from './RestaurantHome';
+import RestaurantHome from './restaurants/RestaurantHome';
 import Home from './Home';
-import FriendHome from './FriendHome';
+import FriendHome from './friends/FriendHome';
 
 const App = () => {
 

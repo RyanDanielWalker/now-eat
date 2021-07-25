@@ -1,7 +1,7 @@
 import React from 'react';
 import { withFirestore, isLoaded } from 'react-redux-firebase';
 import { useSelector, useDispatch } from 'react-redux';
-import * as a from './../actions';
+import * as a from '../../actions';
 
 const FriendSelectionForm = () => {
 

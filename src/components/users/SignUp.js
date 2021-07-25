@@ -23,7 +23,9 @@ const SignUp = () => {
       .createUserWithEmailAndPassword(email, password)
       .then((cred) => {
         return (
-          firestore
+          cred.user.updateProfile({
+            displayName: username
+          }).then(firestore
             .collection('users')
             .doc(cred.user.uid)
             .set({
@@ -31,12 +33,15 @@ const SignUp = () => {
               likedRestaurants: [],
               friend: null
             })
+          )
         )
       }).catch(function (error) {
         alert(error.message);
       });
     history.push('/')
   }
+
+
 
   return (
     <div>

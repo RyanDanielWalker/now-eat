@@ -16,8 +16,12 @@ const SignIn = () => {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
+      .then((result) => {
+        console.log(result);
+        const username = result.user.displayName
+        dispatch(a.userSignIn(username))
+      })
       .then(() => {
-        dispatch(a.userSignIn(email))
         history.push('/');
       }).catch((error) => {
         console.log("Error", error.message);

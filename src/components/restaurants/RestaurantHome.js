@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { withFirestore, useFirestoreConnect, isLoaded, useFirestore } from 'react-redux-firebase';
 import Restaurant from './Restaurant';
 import RestaurantButtons from './RestaurantButtons';
-import * as a from '../actions';
+import * as a from '../../actions';
 import PropTypes from 'prop-types';
 
 const cardStyles = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useFirestoreConnect, isLoaded, useFirestore, withFirestore } from 'react-redux-firebase';
-import * as a from '../actions';
+import * as a from '../../actions';
 import PropTypes from 'prop-types';
 import FriendSelectionForm from './FriendSelectionForm';
 // import { useHistory } from 'react-router';
