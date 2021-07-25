@@ -1,8 +1,8 @@
 import * as c from "./ActionTypes"
 
-export const increaseCounter = (newCount) => {
+export const setCounter = (newCount) => {
   return {
-    type: c.INCREASE_COUNTER,
+    type: c.SET_COUNTER,
     newCount
   }
 }

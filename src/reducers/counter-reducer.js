@@ -6,7 +6,7 @@ const initialState = {
 
 const counterReducer = (state = initialState, action) => {
   switch (action.type) {
-    case c.INCREASE_COUNTER:
+    case c.SET_COUNTER:
       return { ...state, count: action.newCount }
     default:
       return state;

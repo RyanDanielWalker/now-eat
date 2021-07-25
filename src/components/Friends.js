@@ -22,17 +22,28 @@ const Friends = () => {
         <option key={id} value={username}>{username}</option>
       )
     })
+
+    //when friend is selected, add friend id to currentUser friend array
+    //
+
+
+
+
     return (
       <React.Fragment>
-        <div className="ui form">
-          <div className="field">
-            <label>Select Friend</label>
-            <select className="ui search dropdown">
-              <option value="">Select Friend</option>
-              {userList}
-            </select>
+        <h1>Choose A Friend To Match With</h1>
+        <form>
+          <div className="ui form">
+            <div className="field">
+              <label>Select Friend</label>
+              <select className="ui search dropdown">
+                <option value="">Select Friend</option>
+                {userList}
+              </select>
+            </div>
           </div>
-        </div>
+          <button type="submit">Submit</button>
+        </form>
       </React.Fragment>
     )
   } else {

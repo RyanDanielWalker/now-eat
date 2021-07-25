@@ -34,10 +34,8 @@ const RestaurantHome = (props) => {
 
   const counterGoesUp = () => {
     const newCount = count + 1
-    dispatch(a.increaseCounter(newCount));
+    dispatch(a.setCounter(newCount));
   }
-
-
 
   const onClickingYes = () => {
     firestore

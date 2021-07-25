@@ -1,21 +1,26 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import firebase from 'firebase/app';
 import { useHistory } from 'react-router-dom';
+import * as a from './../../actions'
 
 const SignOut = () => {
 
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const doSignOut = () => {
     firebase
       .auth()
       .signOut()
       .then(function () {
+        const newCount = 0
+        dispatch(a.setCounter(newCount))
         // console.log("Successfully signed out!");
-        history.push('/');
       }).catch(function (error) {
-        console.log(error.message);
+        console.log("Signout Error", error.message);
       });
+    history.push('/');
   }
 
   return (
