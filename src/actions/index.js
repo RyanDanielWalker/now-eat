@@ -19,3 +19,15 @@ export const userSignIn = (username) => {
     username
   }
 }
+
+export const nowEating = () => {
+  return {
+    type: c.NOW_EATING
+  }
+}
+
+export const nowNotEating = () => {
+  return {
+    type: c.NOW_NOT_EATING
+  }
+}

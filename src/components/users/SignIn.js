@@ -17,7 +17,6 @@ const SignIn = () => {
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         dispatch(a.userSignIn(email))
-        // console.log("successfully signed in!");
       }).catch((error) => {
         console.log("Error", error.message);
       });

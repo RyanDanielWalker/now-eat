@@ -26,9 +26,6 @@ const Friends = () => {
     //when friend is selected, add friend id to currentUser friend array
     //
 
-
-
-
     return (
       <React.Fragment>
         <h1>Choose A Friend To Match With</h1>
@@ -42,7 +39,7 @@ const Friends = () => {
               </select>
             </div>
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit">Start</button>
         </form>
       </React.Fragment>
     )
