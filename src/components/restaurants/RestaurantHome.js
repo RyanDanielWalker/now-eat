@@ -40,10 +40,6 @@ const RestaurantHome = (props) => {
     )
   }
 
-  ///////////////////////////////////////////////////////////
-  ////////////////////// WAR ZONE ///////////////////////////
-  ///////////////////////////////////////////////////////////
-
   const handleClickingYes = () => {
     firestore
       .collection('users')
@@ -74,25 +70,6 @@ const RestaurantHome = (props) => {
   }
 
   if (isLoaded(restaurants, users)) {
-    if (!currentUserMatchedRestaurantIdArray == null) {
-      const restDataMatchList = currentUserMatchedRestaurantIdArray.map((match) => {
-        return (
-          restData[match]
-        )
-      })
-
-      const renderMatches = restDataMatchList.map((match) => {
-        const { name, url, id } = match;
-        return (
-          <Matches
-            name={name}
-            url={url}
-            key={id}
-          />
-        )
-      })
-    }
-
 
     const renderRestaurantList = restaurants.map((restaurant) => {
       const { image, name, rating, zip, url, id } = restaurant;
@@ -105,6 +82,28 @@ const RestaurantHome = (props) => {
           url={url}
           id={id}
           key={id}
+        />
+      )
+    })
+
+    ///////////////////////////////////////////////////////////
+    ////////////////////// WAR ZONE ///////////////////////////
+    ///////////////////////////////////////////////////////////
+
+    const restDataMatchList = currentUserMatchedRestaurantIdArray.map((match) => {
+      return (
+        restData[match]
+      )
+    })
+
+    const renderMatches = restDataMatchList.map((match, index) => {
+      const { name, url } = match;
+      return (
+        <Matches
+          name={name}
+          url={url}
+          id={index}
+          key={index}
         />
       )
     })
