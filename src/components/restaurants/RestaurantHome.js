@@ -20,7 +20,7 @@ const RestaurantHome = (props) => {
   const restaurants = useSelector(state => state.firestore.ordered.restaurants);
   const users = useSelector(state => state.firestore.ordered.users);
   const count = useSelector(state => state.counter.count);
-  const currentUserMatchedRestaurantArray = useSelector(state => state.firestore.data.users[currentUserId].matchedRestaurantArray);
+  const currentUserMatchedRestaurantIdArray = useSelector(state => state.firestore.data.users[currentUserId].matchedRestaurantArray);
 
   const increaseCounter = () => {
     const newCount = count + 1
@@ -71,17 +71,24 @@ const RestaurantHome = (props) => {
       })
   }
 
-  if (isLoaded(restaurants, users, currentUserMatchedRestaurantArray)) {
+  const restData = useSelector(state => state.firestore.data.restaurants)
+  if (isLoaded(restaurants, users, currentUserMatchedRestaurantIdArray)) {
 
-    console.log("CURRENT USER MATCHED RESTAURANT ARRAY", currentUserMatchedRestaurantArray);
-    console.log("Restaurants", restaurants)
-
-    const renderMatchList = currentUserMatchedRestaurantArray.map((match, index) => {
-      const matchedRestaurants = restaurants.filter(i => i)
+    const renderMatchList = currentUserMatchedRestaurantIdArray.map((match) => {
       return (
-        <h1 key={index}>{match}</h1>
+        restData[match]
       )
     })
+
+    console.log("RENDERMATCHLIST", renderMatchList);
+    console.log("currentlymatchedstrings", currentUserMatchedRestaurantIdArray);
+    console.log("REST DATA", restData)
+
+
+
+
+
+
 
     const renderRestaurantList = restaurants.map((restaurant) => {
       const { image, name, rating, zip, url, id } = restaurant;
@@ -104,9 +111,9 @@ const RestaurantHome = (props) => {
         <div className="ui centered grid">
           <>{renderRestaurantList[count]}</>
         </div>
-        <div>
+        {/* <div>
           <>{renderMatchList}</>
-        </div>
+        </div> */}
         <div className="ui centered grid">
           <RestaurantButtons
             onClickingYes={handleClickingYes}
