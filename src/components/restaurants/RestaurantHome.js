@@ -41,22 +41,6 @@ const RestaurantHome = (props) => {
   ///////////////////////////////////////////////////////////
   ////////////////////// WAR ZONE ///////////////////////////
   ///////////////////////////////////////////////////////////
-  const renderMatchBox = () => {
-    firestore
-      .collection('users')
-      .doc(currentUserId)
-      .get()
-      .then((doc) => {
-        const matchedRestaurantArray = doc.data().matchedRestaurantArray
-        matchedRestaurantArray.map((match) => {
-          return (
-            <div>
-              <h1>{match}</h1>
-            </div>
-          )
-        })
-      })
-  }
 
   const handleClickingYes = () => {
     firestore
@@ -70,13 +54,11 @@ const RestaurantHome = (props) => {
         const prevMatchedRestaurantArray = doc.data().matchedRestaurantArray
         if (!prevLikedArray.includes(currentRestaurantId)) {
           if (friendRestaurantArray.includes(currentRestaurantId)) {
-            console.log("MOTHER FREAKIN' MATCH!")
             const propertiesToUpdate = {
               likedRestaurants: [...prevLikedArray, currentRestaurantId],
               matchedRestaurantArray: [...prevMatchedRestaurantArray, currentRestaurantId]
             }
             firestoreUpdateCurrentUser(propertiesToUpdate)
-              .then(renderMatchBox())
           } else {
             const propertiesToUpdate = {
               likedRestaurants: [...prevLikedArray, currentRestaurantId],
@@ -92,8 +74,10 @@ const RestaurantHome = (props) => {
   if (isLoaded(restaurants, users, currentUserMatchedRestaurantArray)) {
 
     console.log("CURRENT USER MATCHED RESTAURANT ARRAY", currentUserMatchedRestaurantArray);
+    console.log("Restaurants", restaurants)
 
     const renderMatchList = currentUserMatchedRestaurantArray.map((match, index) => {
+      const matchedRestaurants = restaurants.filter(i => i)
       return (
         <h1 key={index}>{match}</h1>
       )
