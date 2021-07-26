@@ -17,7 +17,7 @@ const Matches = (props) => {
 Matches.propTypes = {
   name: PropTypes.string,
   url: PropTypes.string,
-  id: PropTypes.number
+  id: PropTypes.number,
 }
 
 export default Matches;

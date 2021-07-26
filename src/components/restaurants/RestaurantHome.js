@@ -10,6 +10,14 @@ import PropTypes from 'prop-types';
 const RestaurantHome = (props) => {
   const { currentUser } = props;
 
+  const cardStyles = {
+    padding: '10px',
+    minWidth: '275px',
+    width: '17vw',
+    marginTop: '5vw',
+    marginBottom: '3vw',
+  }
+
   useFirestoreConnect([
     { collection: 'restaurants' },
     { collection: 'users' }
@@ -22,6 +30,7 @@ const RestaurantHome = (props) => {
   const users = useSelector(state => state.firestore.ordered.users);
   const count = useSelector(state => state.counter.count);
   const currentUserMatchedRestaurantIdArray = useSelector(state => state.firestore.data.users[currentUserId].matchedRestaurantArray);
+  const currentUserFriend = useSelector(state => state.firestore.data.users[currentUserId].currentFriend);
   const restData = useSelector(state => state.firestore.data.restaurants)
 
   const increaseCounter = () => {
@@ -108,46 +117,38 @@ const RestaurantHome = (props) => {
           url={url}
           id={id}
           key={id}
+          cardStyles={cardStyles}
         />
       )
     })
 
     return (
-      // <React.Fragment>
-      //   <div className="ui centered grid">
-      //     <>{renderRestaurantList[count]}</>
-      //   </div>
-      //   <div>
-      //     <>{renderMatches}</>
-      //   </div>
-      //   <div className="ui centered grid">
-      //     <RestaurantButtons
-      //       onClickingYes={handleClickingYes}
-      //       increaseCounter={increaseCounter} />
-      //   </div>
-      // </React.Fragment>
       <React.Fragment>
-        <div className="ui placeholder segment">
-          <div className="ui two column very relaxed stackable grid">
-            <div className="column">
-              <>{renderMatches}</>
-              <>{renderRestaurantList[count]}</>
+        <div className="ui two column very relaxed stackable grid">
+          <div className="column">
+            <div className="ui centered grid">
+              <div style={cardStyles} className='ui centered card'>
+                <div className="content">
+                  <div className="header">
+                    Matches with {currentUserFriend}
+                  </div>
+                  <>{renderMatches}</>
+                </div>
+              </div>
             </div>
-            <div className='middle aligned column'>
+          </div>
+          <div className='middle aligned column'>
+            <>{renderRestaurantList[count]}</>
+            <div className='ui centered grid'>
               <RestaurantButtons
                 onClickingYes={handleClickingYes}
                 increaseCounter={increaseCounter}
               />
             </div>
-            <div className='ui vertical divider'>
-
-            </div>
-
+          </div>
+          <div className='ui vertical divider'>
           </div>
         </div>
-
-
-
       </React.Fragment>
     )
   } else {

@@ -1,16 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const cardStyles = {
-  padding: '10px',
-  minWidth: '275px',
-  width: '17vw',
-  marginTop: '5vw',
-  marginBottom: '3vw',
-}
-
 const Restaurant = (props) => {
-  const { name, image, zip, rating, url, id } = props;
+  const { name, image, zip, rating, url, id, cardStyles } = props;
   return (
     <div style={cardStyles} className="ui centered card" key={id}>
       <div className="image">
@@ -36,6 +28,7 @@ Restaurant.propTypes = {
   rating: PropTypes.string,
   url: PropTypes.string,
   id: PropTypes.string,
+  cardStyles: PropTypes.object
 }
 
 export default Restaurant;
