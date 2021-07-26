@@ -22,9 +22,6 @@ const SignOut = () => {
       .auth()
       .signOut()
       .then(() => {
-        const newCount = 0
-        dispatch(a.userSignOut())
-        dispatch(a.setCounter(newCount))
         const propertiesToUpdate = {
           matchedRestaurantArray: [],
           currentFriend: null,
@@ -39,7 +36,12 @@ const SignOut = () => {
           )
         )
       })
-      .then(history.push('/'))
+      .then(() => {
+        const newCount = 0
+        dispatch(a.userSignOut())
+        dispatch(a.setCounter(newCount))
+        history.push('/')
+      })
       .catch((error) => {
         console.log("Signout Error", error.message);
       });

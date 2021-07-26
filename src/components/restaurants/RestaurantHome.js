@@ -29,15 +29,21 @@ const RestaurantHome = (props) => {
   ///////////////////////////////////////////////////////////
   ////////////////////// WAR ZONE ///////////////////////////
   ///////////////////////////////////////////////////////////
-  // const renderMatchBox = (currentFriend)
-  // const renderMatches = () => {
-  //   //currentRestaurantId
-  //   //currentFriend username
-  //   //
-  //   return (
-  //     <Matches />
-  //   )
-  // }
+  const renderMatchBox = () => {
+    firestore
+      .collection('users')
+      .doc(currentUserId)
+      .get()
+      .then((doc) => {
+        const matchedRestaurantArray = doc.data().matchedRestaurantArray
+        console.log("RESTARAYDASYDAA", matchedRestaurantArray)
+        matchedRestaurantArray.map((match) => {
+          return (
+            console.log("RENDER:", match)
+          )
+        })
+      })
+  }
 
   const handleClickingYes = () => {
     firestore
@@ -57,6 +63,7 @@ const RestaurantHome = (props) => {
               likedRestaurants: [...prevLikedArray, currentRestaurantId],
               matchedRestaurantArray: [...prevMatchedRestaurantArray, currentRestaurantId]
             }
+            renderMatchBox();
           } else {
             propertiesToUpdate = {
               likedRestaurants: [...prevLikedArray, currentRestaurantId],
@@ -71,7 +78,9 @@ const RestaurantHome = (props) => {
             )
           )
         }
-      }).then(increaseCounter())
+      }).then(() => {
+        increaseCounter()
+      })
   }
 
   if (isLoaded(restaurants, users)) {

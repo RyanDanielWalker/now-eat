@@ -17,7 +17,6 @@ const SignIn = () => {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
-        console.log(result);
         const username = result.user.displayName
         dispatch(a.userSignIn(username))
       })
