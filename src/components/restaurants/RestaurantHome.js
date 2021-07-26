@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { withFirestore, useFirestoreConnect, isLoaded, useFirestore } from 'react-redux-firebase';
 import Restaurant from './Restaurant';
+import Matches from './Matches';
 import RestaurantButtons from './RestaurantButtons';
 import * as a from '../../actions';
 import PropTypes from 'prop-types';
@@ -21,6 +22,7 @@ const RestaurantHome = (props) => {
   const users = useSelector(state => state.firestore.ordered.users);
   const count = useSelector(state => state.counter.count);
   const currentUserMatchedRestaurantIdArray = useSelector(state => state.firestore.data.users[currentUserId].matchedRestaurantArray);
+  const restData = useSelector(state => state.firestore.data.restaurants)
 
   const increaseCounter = () => {
     const newCount = count + 1
@@ -71,23 +73,25 @@ const RestaurantHome = (props) => {
       })
   }
 
-  const restData = useSelector(state => state.firestore.data.restaurants)
-  if (isLoaded(restaurants, users, currentUserMatchedRestaurantIdArray)) {
+  if (isLoaded(restaurants, users)) {
+    if (!currentUserMatchedRestaurantIdArray == null) {
+      const restDataMatchList = currentUserMatchedRestaurantIdArray.map((match) => {
+        return (
+          restData[match]
+        )
+      })
 
-    const renderMatchList = currentUserMatchedRestaurantIdArray.map((match) => {
-      return (
-        restData[match]
-      )
-    })
-
-    console.log("RENDERMATCHLIST", renderMatchList);
-    console.log("currentlymatchedstrings", currentUserMatchedRestaurantIdArray);
-    console.log("REST DATA", restData)
-
-
-
-
-
+      const renderMatches = restDataMatchList.map((match) => {
+        const { name, url, id } = match;
+        return (
+          <Matches
+            name={name}
+            url={url}
+            key={id}
+          />
+        )
+      })
+    }
 
 
     const renderRestaurantList = restaurants.map((restaurant) => {
@@ -111,9 +115,9 @@ const RestaurantHome = (props) => {
         <div className="ui centered grid">
           <>{renderRestaurantList[count]}</>
         </div>
-        {/* <div>
-          <>{renderMatchList}</>
-        </div> */}
+        <div>
+          <>{renderMatches}</>
+        </div>
         <div className="ui centered grid">
           <RestaurantButtons
             onClickingYes={handleClickingYes}
