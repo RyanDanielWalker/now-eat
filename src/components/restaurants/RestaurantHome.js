@@ -40,6 +40,14 @@ const RestaurantHome = (props) => {
     )
   }
 
+  ///////////////////////////////////////////////////////////
+  ////////////////////// WAR ZONE ///////////////////////////
+  ///////////////////////////////////////////////////////////
+
+  // const compareMatchesAtStart = () => {
+
+  // }
+
   const handleClickingYes = () => {
     firestore
       .collection('users')
@@ -71,25 +79,6 @@ const RestaurantHome = (props) => {
 
   if (isLoaded(restaurants, users)) {
 
-    const renderRestaurantList = restaurants.map((restaurant) => {
-      const { image, name, rating, zip, url, id } = restaurant;
-      return (
-        <Restaurant
-          image={image}
-          name={name}
-          rating={rating}
-          zip={zip}
-          url={url}
-          id={id}
-          key={id}
-        />
-      )
-    })
-
-    ///////////////////////////////////////////////////////////
-    ////////////////////// WAR ZONE ///////////////////////////
-    ///////////////////////////////////////////////////////////
-
     const restDataMatchList = currentUserMatchedRestaurantIdArray.map((match) => {
       return (
         restData[match]
@@ -108,20 +97,57 @@ const RestaurantHome = (props) => {
       )
     })
 
-    return (
+    const renderRestaurantList = restaurants.map((restaurant) => {
+      const { image, name, rating, zip, url, id } = restaurant;
+      return (
+        <Restaurant
+          image={image}
+          name={name}
+          rating={rating}
+          zip={zip}
+          url={url}
+          id={id}
+          key={id}
+        />
+      )
+    })
 
+    return (
+      // <React.Fragment>
+      //   <div className="ui centered grid">
+      //     <>{renderRestaurantList[count]}</>
+      //   </div>
+      //   <div>
+      //     <>{renderMatches}</>
+      //   </div>
+      //   <div className="ui centered grid">
+      //     <RestaurantButtons
+      //       onClickingYes={handleClickingYes}
+      //       increaseCounter={increaseCounter} />
+      //   </div>
+      // </React.Fragment>
       <React.Fragment>
-        <div className="ui centered grid">
-          <>{renderRestaurantList[count]}</>
+        <div className="ui placeholder segment">
+          <div className="ui two column very relaxed stackable grid">
+            <div className="column">
+              <>{renderMatches}</>
+              <>{renderRestaurantList[count]}</>
+            </div>
+            <div className='middle aligned column'>
+              <RestaurantButtons
+                onClickingYes={handleClickingYes}
+                increaseCounter={increaseCounter}
+              />
+            </div>
+            <div className='ui vertical divider'>
+
+            </div>
+
+          </div>
         </div>
-        <div>
-          <>{renderMatches}</>
-        </div>
-        <div className="ui centered grid">
-          <RestaurantButtons
-            onClickingYes={handleClickingYes}
-            increaseCounter={increaseCounter} />
-        </div>
+
+
+
       </React.Fragment>
     )
   } else {
