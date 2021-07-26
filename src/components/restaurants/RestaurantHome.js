@@ -20,6 +20,8 @@ const RestaurantHome = (props) => {
   const restaurants = useSelector(state => state.firestore.ordered.restaurants);
   const users = useSelector(state => state.firestore.ordered.users);
   const count = useSelector(state => state.counter.count);
+  const currentUserFirestoreState = useSelector(state => state.firestore.ordered.users.filter((element) => element.id === currentUserId))
+  const currentUserMatchedRestaurantArray = currentUserFirestoreState[0]['matchedRestaurantArray']
 
   const increaseCounter = () => {
     const newCount = count + 1
@@ -48,7 +50,6 @@ const RestaurantHome = (props) => {
       .then((doc) => {
         const matchedRestaurantArray = doc.data().matchedRestaurantArray
         matchedRestaurantArray.map((match) => {
-          console.log("RENDER:", match)
           return (
             <div>
               <h1>{match}</h1>
@@ -57,7 +58,6 @@ const RestaurantHome = (props) => {
         })
       })
   }
-
 
   const handleClickingYes = () => {
     firestore
@@ -77,7 +77,7 @@ const RestaurantHome = (props) => {
               matchedRestaurantArray: [...prevMatchedRestaurantArray, currentRestaurantId]
             }
             firestoreUpdateCurrentUser(propertiesToUpdate)
-            renderMatchBox()
+              .then(renderMatchBox())
           } else {
             const propertiesToUpdate = {
               likedRestaurants: [...prevLikedArray, currentRestaurantId],
@@ -91,7 +91,11 @@ const RestaurantHome = (props) => {
   }
 
   if (isLoaded(restaurants, users)) {
-    console.log("Count:", count)
+
+    console.log("CURRENT USER FIRESTORE ARRAY", currentUserFirestoreState);
+    console.log("CURRENT USER MATCHED RESTAURANT ARRAY", currentUserMatchedRestaurantArray);
+
+
     const renderList = restaurants.map((restaurant) => {
       const { image, name, rating, zip, url, id } = restaurant;
       return (
@@ -108,6 +112,7 @@ const RestaurantHome = (props) => {
     })
 
     return (
+
       <React.Fragment>
         <div className="ui centered grid">
           <>{renderList[count]}</>
