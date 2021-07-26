@@ -26,6 +26,17 @@ const RestaurantHome = (props) => {
     dispatch(a.setCounter(newCount));
   }
 
+  const firestoreUpdateCurrentUser = (propertiesToUpdate) => {
+    return (
+      firestore.update({
+        collection: 'users',
+        doc: currentUserId,
+      },
+        propertiesToUpdate
+      )
+    )
+  }
+
   ///////////////////////////////////////////////////////////
   ////////////////////// WAR ZONE ///////////////////////////
   ///////////////////////////////////////////////////////////
@@ -36,14 +47,17 @@ const RestaurantHome = (props) => {
       .get()
       .then((doc) => {
         const matchedRestaurantArray = doc.data().matchedRestaurantArray
-        console.log("RESTARAYDASYDAA", matchedRestaurantArray)
         matchedRestaurantArray.map((match) => {
+          console.log("RENDER:", match)
           return (
-            console.log("RENDER:", match)
+            <div>
+              <h1>{match}</h1>
+            </div>
           )
         })
       })
   }
+
 
   const handleClickingYes = () => {
     firestore
@@ -56,35 +70,28 @@ const RestaurantHome = (props) => {
         const friendRestaurantArray = doc.data().friendRestaurantArray
         const prevMatchedRestaurantArray = doc.data().matchedRestaurantArray
         if (!prevLikedArray.includes(currentRestaurantId)) {
-          let propertiesToUpdate;
           if (friendRestaurantArray.includes(currentRestaurantId)) {
             console.log("MOTHER FREAKIN' MATCH!")
-            propertiesToUpdate = {
+            const propertiesToUpdate = {
               likedRestaurants: [...prevLikedArray, currentRestaurantId],
               matchedRestaurantArray: [...prevMatchedRestaurantArray, currentRestaurantId]
             }
-            renderMatchBox();
+            firestoreUpdateCurrentUser(propertiesToUpdate)
+            renderMatchBox()
           } else {
-            propertiesToUpdate = {
+            const propertiesToUpdate = {
               likedRestaurants: [...prevLikedArray, currentRestaurantId],
             }
+            firestoreUpdateCurrentUser(propertiesToUpdate)
           }
-          return (
-            firestore.update({
-              collection: 'users',
-              doc: currentUserId,
-            },
-              propertiesToUpdate
-            )
-          )
         }
       }).then(() => {
-        increaseCounter()
+        increaseCounter();
       })
   }
 
   if (isLoaded(restaurants, users)) {
-
+    console.log("Count:", count)
     const renderList = restaurants.map((restaurant) => {
       const { image, name, rating, zip, url, id } = restaurant;
       return (
