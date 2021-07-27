@@ -124,29 +124,34 @@ const RestaurantHome = (props) => {
 
     return (
       <React.Fragment>
-        <div className="ui two column very relaxed stackable grid">
-          <div className="column">
-            <div className="ui centered grid">
-              <div style={cardStyles} className='ui centered card'>
-                <div className="content">
-                  <div className="header">
-                    Matches with {currentUserFriend}
-                  </div>
-                  <>{renderMatches}</>
-                </div>
+        <div className="ui grid">
+          <div className="three wide column">
+
+          </div>
+          <div className="ten wide column">
+            <div className='middle aligned column'>
+              <>{renderRestaurantList[count]}</>
+              <div className='ui centered grid'>
+                <RestaurantButtons
+                  onClickingYes={handleClickingYes}
+                  increaseCounter={increaseCounter}
+                />
               </div>
             </div>
           </div>
-          <div className='middle aligned column'>
-            <>{renderRestaurantList[count]}</>
-            <div className='ui centered grid'>
-              <RestaurantButtons
-                onClickingYes={handleClickingYes}
-                increaseCounter={increaseCounter}
-              />
+          <div className="three wide column">
+            <div className="column">
+              <div className="ui centered grid">
+                <div style={cardStyles} className='ui centered card'>
+                  <div className="content">
+                    <div className="header">
+                      Matches with {currentUserFriend}
+                    </div>
+                    <>{renderMatches}</>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className='ui vertical divider'>
           </div>
         </div>
       </React.Fragment>
