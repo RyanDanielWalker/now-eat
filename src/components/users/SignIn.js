@@ -35,7 +35,6 @@ const SignIn = () => {
       <div style={formPageStyles} className='ui centered grid'>
         <h1>Sign In</h1>
       </ div>
-      {/* <hr style={{ margin: 'auto', width: '15%', marginTop: '3vh' }} /> */}
       <div style={formPageStyles} className='ui centered grid'>
         <form className='ui large form' onSubmit={doSignIn}>
           <div className='two fields'>
