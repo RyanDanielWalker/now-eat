@@ -6,6 +6,9 @@ import * as a from './../../actions'
 import { withFirestore } from 'react-redux-firebase';
 
 const SignIn = () => {
+  const formPageStyles = {
+    marginTop: '10vh'
+  }
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -29,25 +32,36 @@ const SignIn = () => {
 
   return (
     <React.Fragment>
-      <h1>Sign In</h1>
-      <form onSubmit={doSignIn}>
-        <input
-          type='text'
-          name='signInEmail'
-          placeholder='email'
-          required='required'
-        />
-        <input
-          type='password'
-          name='signInPassword'
-          placeholder='password'
-          required='required'
-        />
-        <button type='submit'>Sign In</button>
-      </form>
+      <div style={formPageStyles} className='ui centered grid'>
+        <h1>Sign In</h1>
+      </ div>
+      <div style={formPageStyles} className='ui centered grid'>
+        <div className='ui large form' onSubmit={doSignIn}>
+          <div class='two fields'>
+            <div class='field'>
+              <input
+                type='text'
+                name='signInEmail'
+                placeholder='email'
+                required='required'
+              />
+            </div>
+            <div class='field'>
+              <input
+                type='password'
+                name='signInPassword'
+                placeholder='password'
+                required='required'
+              />
+            </div>
+          </div>
+          <div className='ui submit button'>Sign In</div>
+        </div>
+      </div>
+      <div style={formPageStyles} className='ui centered grid'>
+        <p>Don't have an account? Register <Link to={`/signup`}>here</Link></p>
+      </div>
 
-      <p>Don't have an account?</p>
-      <p>Create one <Link to={`/signup`}>here</Link></p>
     </React.Fragment >
   )
 };
