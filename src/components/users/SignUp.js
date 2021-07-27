@@ -4,9 +4,13 @@ import { Link, useHistory } from 'react-router-dom';
 import { useFirestore, useFirestoreConnect, withFirestore } from 'react-redux-firebase';
 
 const SignUp = () => {
+  const formPageStyles = {
+    marginTop: '10vh'
+  }
 
   const firestore = useFirestore()
   const history = useHistory();
+
 
   useFirestoreConnect([
     { collection: 'restaurants' },
@@ -44,32 +48,45 @@ const SignUp = () => {
   }
 
   return (
-    <div>
-      <h1>Sign Up</h1>
-      <form onSubmit={doSignUp}>
-        <input
-          type='text'
-          name='email'
-          placeholder='email'
-          required='required'
-        />
-        <input
-          type='password'
-          name='password'
-          placeholder='password'
-          required='required'
-        />
-        <input
-          type='text'
-          name='username'
-          placeholder='username'
-          required='required'
-        />
-        <button type='submit'>Sign up</button>
-      </form>
-      <p>Already have an account?</p>
-      <p>Sign In <Link to={"/signin"}>here</Link></p>
-    </div>
+    <React.Fragment>
+      <div style={formPageStyles} className='ui centered grid'>
+        <h1>Sign Up</h1>
+      </ div>
+      <div style={formPageStyles} className='ui centered grid'>
+        <form className='ui large form' onSubmit={doSignUp}>
+          <div className='three fields'>
+            <div className='field'>
+              <input
+                type='text'
+                name='email'
+                placeholder='email'
+                required='required'
+              />
+            </div>
+            <div className='field'>
+              <input
+                type='password'
+                name='password'
+                placeholder='password'
+                required='required'
+              />
+            </div>
+            <div className='field'>
+              <input
+                type='text'
+                name='username'
+                placeholder='username'
+                required='required'
+              />
+            </div>
+          </div>
+          <button type='submit' className='ui submit button'>Sign up</button>
+        </form>
+      </div>
+      <div style={formPageStyles} className='ui centered grid'>
+        <p>Already have an account? Sign In <Link to={"/signin"}>Here</Link></p>
+      </div >
+    </React.Fragment>
   )
 }
 

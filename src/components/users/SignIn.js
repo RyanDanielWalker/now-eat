@@ -36,9 +36,9 @@ const SignIn = () => {
         <h1>Sign In</h1>
       </ div>
       <div style={formPageStyles} className='ui centered grid'>
-        <div className='ui large form' onSubmit={doSignIn}>
-          <div class='two fields'>
-            <div class='field'>
+        <form className='ui large form' onSubmit={doSignIn}>
+          <div className='two fields'>
+            <div className='field'>
               <input
                 type='text'
                 name='signInEmail'
@@ -46,7 +46,7 @@ const SignIn = () => {
                 required='required'
               />
             </div>
-            <div class='field'>
+            <div className='field'>
               <input
                 type='password'
                 name='signInPassword'
@@ -55,8 +55,8 @@ const SignIn = () => {
               />
             </div>
           </div>
-          <div className='ui submit button'>Sign In</div>
-        </div>
+          <button type='submit' className='ui submit button'>Sign In</button>
+        </form>
       </div>
       <div style={formPageStyles} className='ui centered grid'>
         <p>Don't have an account? Register <Link to={`/signup`}>here</Link></p>

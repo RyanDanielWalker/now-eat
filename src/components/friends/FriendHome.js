@@ -6,8 +6,11 @@ import PropTypes from 'prop-types';
 import FriendSelectionForm from './FriendSelectionForm';
 
 const FriendHome = (props) => {
-
   const { currentUser } = props;
+
+  const formPageStyles = {
+    marginTop: '10vh'
+  }
 
   useFirestoreConnect([
     { collection: 'restaurants' },
@@ -53,9 +56,15 @@ const FriendHome = (props) => {
   if (isLoaded(users)) {
     return (
       <React.Fragment>
-        <h1>Choose A Friend To Match With</h1>
-        <FriendSelectionForm />
-        <button onClick={handleClickingStart} type="submit">Start</button>
+        <div style={formPageStyles} className='ui centered grid'>
+          <h1>Choose A Friend To Match With</h1>
+        </div>
+        <div style={formPageStyles} className='ui centered grid'>
+          <FriendSelectionForm />
+        </div>
+        <div style={formPageStyles} className='ui centered grid'>
+          <button className="ui submit button" onClick={handleClickingStart} type="submit">Start</button>
+        </div>
       </React.Fragment>
     )
   } else {
