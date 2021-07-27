@@ -16,6 +16,7 @@ const RestaurantHome = (props) => {
     width: '17vw',
     marginTop: '5vw',
     marginBottom: '3vw',
+    textAlign: 'center'
   }
 
   useFirestoreConnect([
