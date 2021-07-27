@@ -84,7 +84,7 @@ const SignUp = () => {
         </form>
       </div>
       <div style={formPageStyles} className='ui centered grid'>
-        <p>Already have an account? Sign In <Link to={"/signin"}>Here</Link></p>
+        <p style={{ color: 'grey' }}>Already have an account? Sign In <Link to={"/signin"}>Here</Link></p>
       </div >
     </React.Fragment>
   )
