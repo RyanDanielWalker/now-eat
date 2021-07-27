@@ -7,6 +7,10 @@ import { withFirestore, useFirestoreConnect, useFirestore } from 'react-redux-fi
 
 const SignOut = () => {
 
+  const formPageStyles = {
+    marginTop: '10vh'
+  }
+
   const history = useHistory();
   const firestore = useFirestore();
   const dispatch = useDispatch();
@@ -49,8 +53,12 @@ const SignOut = () => {
 
   return (
     <React.Fragment>
-      <h1>Are you sure you want to sign out?</h1>
-      <button type="submit" onClick={doSignOut}>Sign Out</button>
+      <div style={formPageStyles} className='ui centered grid'>
+        <h1>Are you sure you want to sign out?</h1>
+      </div>
+      <div style={formPageStyles} className="ui centered grid">
+        <button className='ui submit button' type="submit" onClick={doSignOut}>Sign Out</button>
+      </div>
     </React.Fragment>
   )
 }
