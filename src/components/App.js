@@ -11,27 +11,32 @@ import RestaurantHome from './restaurants/RestaurantHome';
 import Home from './Home';
 import FriendHome from './friends/FriendHome';
 import Logo from './Logo';
-import foodImage from './../images/food.png'
 
 const App = () => {
 
   return (
-    <Router>
-      <Container>
-        <Logo />
-        <Header />
-        <div style={{ backgroundColor: '#CEE6AD' }}>
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/signin" exact component={SignIn} />
-            <Route path="/signup" exact component={SignUp} />
-            <Route path="/signout" exact component={SignOut} />
-            <Route path="/restaurant_home" exact component={RestaurantHome} />
-            <Route path="/friend_home" exact component={FriendHome} />
-          </Switch>
-        </div>
-      </Container>
-    </Router>
+    <React.Fragment>
+      <Router>
+        <Container>
+          <Logo />
+          <Header />
+          <div style={{
+            paddingTop: '1px',
+            minHeight: '600px',
+            backgroundColor: '#CEE6AD'
+          }}>
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/signin" exact component={SignIn} />
+              <Route path="/signup" exact component={SignUp} />
+              <Route path="/signout" exact component={SignOut} />
+              <Route path="/restaurant_home" exact component={RestaurantHome} />
+              <Route path="/friend_home" exact component={FriendHome} />
+            </Switch>
+          </div>
+        </Container>
+      </Router>
+    </React.Fragment>
   );
 }
 

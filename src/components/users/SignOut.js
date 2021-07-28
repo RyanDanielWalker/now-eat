@@ -54,7 +54,11 @@ const SignOut = () => {
   return (
     <React.Fragment>
       <div style={{ marginTop: '75px' }} className='ui centered grid'>
-        <h1>Are you sure you want to sign out?</h1>
+        <h1 style={{
+          textDecoration: 'underline',
+          textDecorationThickness: '3px',
+          textDecorationColor: '#222629'
+        }}>Are you sure you want to sign out?</h1>
       </div>
       <div style={formPageStyles} className="ui centered grid">
         <button style={{ backgroundColor: '#CD4834', color: '#CEE6AD' }} className='ui submit button' type="submit" onClick={doSignOut}>Sign Out</button>

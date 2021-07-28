@@ -33,7 +33,11 @@ const SignIn = () => {
   return (
     <React.Fragment>
       <div style={{ marginTop: '75px' }} className='ui centered grid'>
-        <h1>Sign In</h1>
+        <h1 style={{
+          textDecoration: 'underline',
+          textDecorationThickness: '3px',
+          textDecorationColor: '#222629'
+        }}>Sign In</h1>
       </ div>
       <div style={formPageStyles} className='ui centered grid'>
         <form className='ui large form' onSubmit={doSignIn}>
@@ -59,7 +63,7 @@ const SignIn = () => {
         </form>
       </div>
       <div style={formPageStyles} className='ui centered grid'>
-        <p style={{ color: 'grey' }}>Don't have an account? Register <Link to={`/signup`}>here</Link></p>
+        <p style={{ color: 'grey' }}>Don't have an account? Register <Link style={{ color: '#CD4834' }} to={`/signup`}>here</Link></p>
       </div>
     </React.Fragment >
   )

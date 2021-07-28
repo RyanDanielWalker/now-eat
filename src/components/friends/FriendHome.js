@@ -57,7 +57,11 @@ const FriendHome = (props) => {
     return (
       <React.Fragment>
         <div style={{ marginTop: '75px' }} className='ui centered grid'>
-          <h1>Choose A Friend To Match With</h1>
+          <h1 style={{
+            textDecoration: 'underline',
+            textDecorationThickness: '3px',
+            textDecorationColor: '#222629'
+          }}>Choose A Friend To Match With</h1>
         </div>
         <div style={formPageStyles} className='ui centered grid'>
           <FriendSelectionForm />
