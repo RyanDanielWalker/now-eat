@@ -19,9 +19,9 @@ const Header = () => {
       <Container>
         {account.signedIn &&
           <Navbar.Brand >
-            <h4 style={{ color: "white", marginLeft: '8px' }} class="ui header">
+            <h4 style={{ color: "white", marginLeft: '8px' }} className="ui header">
               {account.username}
-              <div style={{ color: 'lightgray', marginLeft: '5px' }} class="sub header">Signed In</div>
+              <div style={{ color: 'lightgray', marginLeft: '5px' }} className="sub header">Signed In</div>
             </h4>
             {/* Welcome, {account.username} */}
             {/* <i className="user secret icon">{account.username}</i> */}
