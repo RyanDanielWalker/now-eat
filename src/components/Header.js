@@ -7,15 +7,14 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
   const account = useSelector(state => state.account)
-  // console.log("Header Account log", account)
   const headerStyles = {
     margin: 'auto',
-    maxWidth: '80%',
+    width: '80%',
     marginTop: '11px',
-    backgroundColor: 'black',
+    backgroundColor: '#CD4834',
   }
   return (
-    <Navbar style={headerStyles} expand="lg" bg="dark" variant="dark">
+    <Navbar style={headerStyles} expand="lg" variant="dark">
       <Container>
         {account.signedIn &&
           <Navbar.Brand >

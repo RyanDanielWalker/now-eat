@@ -13,10 +13,11 @@ const RestaurantHome = (props) => {
   const cardStyles = {
     padding: '10px',
     minWidth: '275px',
-    width: '17vw',
+    width: '275px',
     marginTop: '5vw',
     marginBottom: '3vw',
-    textAlign: 'center'
+    textAlign: 'center',
+    backgroundColor: '#EAF6C9'
   }
 
   useFirestoreConnect([
@@ -127,7 +128,6 @@ const RestaurantHome = (props) => {
       <React.Fragment>
         <div className="ui grid">
           <div className="three wide column">
-
           </div>
           <div className="ten wide column">
             <div className='middle aligned column'>
@@ -146,7 +146,11 @@ const RestaurantHome = (props) => {
                 <div style={cardStyles} className='ui centered card'>
                   <div className="content">
                     <div className="header">
-                      Matches with {currentUserFriend}
+                      <h5 style={{
+                        textDecoration: 'underline',
+                        textDecorationThickness: '4px',
+                        textDecorationColor: '#222629'
+                      }}>Matches with {currentUserFriend}</h5>
                     </div>
                     <>{renderMatches}</>
                   </div>

@@ -5,12 +5,21 @@ const Restaurant = (props) => {
   const { name, image, zip, rating, url, id, cardStyles } = props;
   return (
     <div style={cardStyles} className="ui centered card" key={id}>
+      <div>
+        <h5 style={{
+          textDecoration: 'underline',
+          textDecorationThickness: '3px',
+          textDecorationColor: '#222629',
+          textEmphasis: 'bold',
+          marginBottom: '8px'
+        }}>Do you want to eat here?</h5>
+      </div>
       <div className="image">
         <img src={image} alt={`food from ${name}`} />
       </div >
       <div className="content">
         <div className="header">
-          <a href={url} target="blank" rel="noopener noreferrer">{name}</a>
+          <a style={{ color: '#CD4834' }} href={url} target="blank" rel="noopener noreferrer">{name}</a>
         </div>
         <div className="meta">{zip}</div>
         <div className="meta">

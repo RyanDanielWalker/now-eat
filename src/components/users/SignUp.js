@@ -2,8 +2,8 @@ import React from 'react';
 import firebase from 'firebase/app';
 import { Link, useHistory } from 'react-router-dom';
 import { useFirestore, useFirestoreConnect, withFirestore } from 'react-redux-firebase';
-import * as a from './../../actions'
-import { useDispatch } from 'react-redux';
+// import * as a from './../../actions'
+// import { useDispatch } from 'react-redux';
 
 const SignUp = () => {
   const formPageStyles = {
@@ -12,7 +12,7 @@ const SignUp = () => {
 
   const firestore = useFirestore()
   const history = useHistory();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
 
   useFirestoreConnect([
@@ -25,7 +25,6 @@ const SignUp = () => {
     const email = event.target.email.value;
     const password = event.target.password.value;
     const username = event.target.username.value;
-    dispatch(a.userSignIn(username))
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
