@@ -7,7 +7,7 @@ import { withFirestore } from 'react-redux-firebase';
 
 const SignIn = () => {
   const formPageStyles = {
-    marginTop: '10vh'
+    marginTop: '22px'
   }
   const dispatch = useDispatch();
   const history = useHistory();
@@ -32,7 +32,7 @@ const SignIn = () => {
 
   return (
     <React.Fragment>
-      <div style={formPageStyles} className='ui centered grid'>
+      <div style={{ marginTop: '75px' }} className='ui centered grid'>
         <h1>Sign In</h1>
       </ div>
       <div style={formPageStyles} className='ui centered grid'>
@@ -61,7 +61,6 @@ const SignIn = () => {
       <div style={formPageStyles} className='ui centered grid'>
         <p style={{ color: 'grey' }}>Don't have an account? Register <Link to={`/signup`}>here</Link></p>
       </div>
-
     </React.Fragment >
   )
 };

@@ -8,7 +8,7 @@ import { withFirestore, useFirestoreConnect, useFirestore } from 'react-redux-fi
 const SignOut = () => {
 
   const formPageStyles = {
-    marginTop: '10vh'
+    marginTop: '22px'
   }
 
   const history = useHistory();
@@ -53,7 +53,7 @@ const SignOut = () => {
 
   return (
     <React.Fragment>
-      <div style={formPageStyles} className='ui centered grid'>
+      <div style={{ marginTop: '75px' }} className='ui centered grid'>
         <h1>Are you sure you want to sign out?</h1>
       </div>
       <div style={formPageStyles} className="ui centered grid">

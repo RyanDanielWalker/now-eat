@@ -23,11 +23,10 @@ const FriendSelectionForm = () => {
     })
     return (
       <form>
-        <div className="ui form">
+        <div style={{ width: '300px', textAlign: 'Center' }} className="ui form">
           <div className="field">
-            <label>Select Friend</label>
             <select value={value} placeholder="Select Friend" onChange={handleValueChange} className="ui search dropdown">
-              <option value="">Choose a Friend</option>
+              <option value="">Friends</option>
               {userList}
             </select>
           </div>

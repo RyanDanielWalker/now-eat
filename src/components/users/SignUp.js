@@ -5,7 +5,7 @@ import { useFirestore, useFirestoreConnect, withFirestore } from 'react-redux-fi
 
 const SignUp = () => {
   const formPageStyles = {
-    marginTop: '10vh'
+    marginTop: '22px'
   }
 
   const firestore = useFirestore()
@@ -49,7 +49,7 @@ const SignUp = () => {
 
   return (
     <React.Fragment>
-      <div style={formPageStyles} className='ui centered grid'>
+      <div style={{ marginTop: '65px' }} className='ui centered grid'>
         <h1>Sign Up</h1>
       </ div>
       <div style={formPageStyles} className='ui centered grid'>

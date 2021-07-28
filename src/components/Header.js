@@ -10,12 +10,23 @@ const Header = () => {
   // console.log("Header Account log", account)
   const headerStyles = {
     margin: 'auto',
-    maxWidth: '75%'
+    maxWidth: '80%',
+    marginTop: '11px',
+    backgroundColor: 'black',
   }
   return (
     <Navbar style={headerStyles} expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand ></Navbar.Brand>
+        {account.signedIn &&
+          <Navbar.Brand >
+            <h4 style={{ color: "white", marginLeft: '8px' }} class="ui header">
+              {account.username}
+              <div style={{ color: 'lightgray', marginLeft: '5px' }} class="sub header">Signed In</div>
+            </h4>
+            {/* Welcome, {account.username} */}
+            {/* <i className="user secret icon">{account.username}</i> */}
+          </Navbar.Brand>
+        }
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto"></Nav>
@@ -33,15 +44,7 @@ const Header = () => {
                 Sign Out
               </Nav.Link>
             }
-            {account.signedIn &&
-              <Nav.Link>
-                {account.username}
-                {/* <i className="user secret icon">{account.username}</i> */}
-              </Nav.Link>
-            }
-
           </Nav>
-
         </Navbar.Collapse>
       </Container>
     </Navbar>

@@ -9,7 +9,7 @@ const FriendHome = (props) => {
   const { currentUser } = props;
 
   const formPageStyles = {
-    marginTop: '10vh'
+    marginTop: '22px'
   }
 
   useFirestoreConnect([
@@ -56,7 +56,7 @@ const FriendHome = (props) => {
   if (isLoaded(users)) {
     return (
       <React.Fragment>
-        <div style={formPageStyles} className='ui centered grid'>
+        <div style={{ marginTop: '75px' }} className='ui centered grid'>
           <h1>Choose A Friend To Match With</h1>
         </div>
         <div style={formPageStyles} className='ui centered grid'>
