@@ -8,11 +8,14 @@ import { useSelector } from "react-redux";
 const Header = () => {
   const account = useSelector(state => state.account)
   // console.log("Header Account log", account)
+  const headerStyles = {
+    margin: 'auto',
+    maxWidth: '75%'
+  }
   return (
-    <Navbar expand="lg" bg="dark" variant="dark">
+    <Navbar style={headerStyles} expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand >Now Eat</Navbar.Brand>
-        {/* as={Link} to="/" */}
+        <Navbar.Brand ></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto"></Nav>

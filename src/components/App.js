@@ -10,13 +10,15 @@ import SignOut from './users/SignOut'
 import RestaurantHome from './restaurants/RestaurantHome';
 import Home from './Home';
 import FriendHome from './friends/FriendHome';
+import Logo from './Logo';
 
 const App = () => {
 
   return (
     <Router>
-      <Header />
       <Container>
+        <Logo />
+        <Header />
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/signin" exact component={SignIn} />
