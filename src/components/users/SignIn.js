@@ -55,7 +55,7 @@ const SignIn = () => {
               />
             </div>
           </div>
-          <button type='submit' className='ui submit button'>Sign In</button>
+          <button style={{ backgroundColor: '#CD4834', color: '#CEE6AD' }} type='submit' className='ui submit button'>Sign In</button>
         </form>
       </div>
       <div style={formPageStyles} className='ui centered grid'>

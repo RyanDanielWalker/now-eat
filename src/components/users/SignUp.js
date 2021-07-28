@@ -82,7 +82,7 @@ const SignUp = () => {
               />
             </div>
           </div>
-          <button type='submit' className='ui submit button'>Sign up</button>
+          <button style={{ backgroundColor: '#CD4834', color: '#CEE6AD' }} type='submit' className='ui submit button'>Sign up</button>
         </form>
       </div>
       <div style={formPageStyles} className='ui centered grid'>

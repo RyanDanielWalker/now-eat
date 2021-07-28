@@ -63,7 +63,7 @@ const FriendHome = (props) => {
           <FriendSelectionForm />
         </div>
         <div style={formPageStyles} className='ui centered grid'>
-          <button className="ui submit button" onClick={handleClickingStart} type="submit">Start</button>
+          <button style={{ backgroundColor: '#CD4834', color: '#CEE6AD' }} className="ui submit button" onClick={handleClickingStart} type="submit">Start</button>
         </div>
       </React.Fragment>
     )

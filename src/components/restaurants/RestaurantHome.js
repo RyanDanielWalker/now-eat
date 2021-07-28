@@ -148,7 +148,7 @@ const RestaurantHome = (props) => {
                     <div className="header">
                       <h5 style={{
                         textDecoration: 'underline',
-                        textDecorationThickness: '4px',
+                        textDecorationThickness: '3px',
                         textDecorationColor: '#222629'
                       }}>Matches with {currentUserFriend}</h5>
                     </div>
