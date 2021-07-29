@@ -109,13 +109,13 @@ const RestaurantHome = (props) => {
     })
 
     const renderRestaurantList = restaurants.map((restaurant) => {
-      const { image, name, rating, zip, url, id } = restaurant;
+      const { image, name, rating, address, url, id } = restaurant;
       return (
         <Restaurant
           image={image}
           name={name}
           rating={rating}
-          zip={zip}
+          address={address}
           url={url}
           id={id}
           key={id}
