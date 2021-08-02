@@ -1,64 +1,69 @@
-Name of Student: Ryan Walker
+# _NOW EAT_
 
-Name of Project: NowEat (Dinner and a Movie if stretch-goals met)
+#### _A web application designed to alleviate the stress of choosing a place to eat based on a matching system that compares destinations users select whether or not they would like to go_
 
-Project's Purpose or Goal: The goal of this application is to allow users to choose which restaurants they would mutually like to eat at.
+#### By _Ryan Walker_
 
-List the absolute minimum features the project requires to meet this purpose or goal:
-- A list of popular restaurants in Portland
-- The ability to choose "Yes" or "No" for a given restaurant
-- Compare choices between two or more users
+## Description
+Now Eat is an application that will allow users to compare interests in restaurants and return those that match. Built with React/Redux, Now Eat uses the NoSQL cloud-hosted databases Firebase, for user authentication, and Firestore, for holding user data and information about restaurants. Users have the ability to create accounts, match with friends, and choose restaurants that they would like to eat at. Now Eat will take away all of the guess-work when it comes to deciding where to eat as a couple or a group. 
 
-What tools, frameworks, libraries, APIs, modules and/or other resources (whatever is specific to your track, and your language) will you use to create this MVP? List them all here. Be specific.
-- JavaScript 
-- React
-- Yelp/Restaurant API
-
-If you finish developing the MVP with time to spare, what will you work on next?
-- The ability for users to create accounts, log-in and log-out
-- The ability for users to store choices in a database
-- Incorporate AndChill (previous project for matching movie choices)
-- Give the users the option to search for certain restaurants/movies
-
-What additional tools, frameworks, libraries, APIs, or other resources will these additional features require?
-- The Movie DB API
-- NoSQL
-- JWT
+## Components
+![Sign In Page](src/images/signup.png)
+![Sign In Page](src/images/signin.png)
+![Sign In Page](src/images/match.png)
+![Sign In Page](src/images/app.png)
+![Sign In Page](src/images/logoff.png)
 
 
-||||||||||||||||||||||Components||||||||||||||||||||||||
-Users:
-* Login/Register/Logoff
-* Page to see users' liked choices
-* Page to display matches between two users
-
-Restaurants:
-* Set location
-* Page that displays current restaurant
-* Button for 'yes'
-  * if 'yes': move selection to 'liked restaurants,' display next restaurant
-    * if, when compared to other users choices, similar 'yes' for certain restaurant, alert with 'match'
-  * if 'no': display next restaurant
-
-|||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-
-State: 
-* Current User Liked Movies Array/Object
-* Other User Liked Movies Array/Object
-* Current Restaurant being displayed
-* User logged in status
-*** 
--Master Restaurant List is returned from API and saved in JSON object
--Restaurant Detail page displays one restaurant {selected restaurant} at a time based on functionality (highest rated/closest)
--When a choice is made (yes/no), selected restaurant is changed based on restaurant id
+## User Stories
+* Sign Up Screen: A user will have the ability to create an account using their email address and a unique password. They will also be able to choose a username. 
+* Sign In Screen: A user will be able to sign in to their account.
+* Select Friend Screen: A user will be able to choose which of their friends they would like to compare matches with. 
+* Application Screen: 
+  * A user will be presented with restaurants one at a time from their field of choice. 
+  * They will have the option to choose if they would like to eat at the restaurant or not. 
+  * They will be shown matches for 'yes' answers between themselves and the person they have chosen to compare matches with. 
+* Sign Out Screen: A user will have the ability to sign out from their account.
 
 
-|||||||||||||||||||||||||Thoughts||||||||||||||||||||||||
--this application potentially only needs READ functionality. 
--need to figure out how to display different pages when a user successfully signs in/registers
--Not a big fan of yelp
+## Setup and Use
 
-|||||||||||||||||||||||Potential APIs|||||||||||||||||||
--Not Yelp
--https://documenu.com/docs (has npm install capabilities)/500 calls per month though. No photos.
--https://api.documenu.com/v2/restaurant/4072702673999819?key=YOUR_API_KEY_GOES_HERE
+### Prerequisites
+* A text editor like [VS Code](https://code.visualstudio.com/)
+* A command line interface like Terminal or GitBash to run and interact with the app.
+
+### Installation
+1. Clone the repository: `$ git clone https://github.com/RyanDanielWalker/now-eat`
+2. Navigate to the `/now-eat` directory on your computer
+3. Open with your preferred text editor to view the code base
+4. To run the app:
+    * Run the command `npm start` to run the project!
+    * View the application via your preferred web browser by visiting `localhost:3000/`
+
+## Known Bugs
+#### Works in progress:
+* If user has chosen restaurants already, matches will not register with selected friend. 
+* New user not shown in toolbar upon account creation
+
+## Technologies Used
+* JavaScript
+* React
+* Redux
+* Firebase
+* Firestore
+* JSX
+* VS Code
+* NPM
+* Git
+* GitHub
+* Webpack
+* Adobe Illustrator
+
+### License
+
+MIT
+
+Copyright (c) 2021 _Ryan Walker_
+
+## Contact Information
+[Ryandanielwalker@gmail.com](mailto:ryandanielwalker@gmail.com)
